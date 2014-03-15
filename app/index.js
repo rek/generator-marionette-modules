@@ -27,24 +27,26 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
 
     var prompts = [
       {
-        type: 'confirm',
-        name: 'generateAll',
-        message: 'Would you like me to generate a project for you?',
-        default: true
+        // type: 'confirm',
+        name: 'status',
+        message: 'How are you doing today?',
+        default: 'fine'
       },
       {
         name: 'moduleName',
-        message: '\n\nWonderful*! Then what should we name her?',
+        message: '\n\nWonderful*! Then what should we name your project?',
+        default: 'test'
       },
       {
         name: 'authorName',
-        message: 'and what then is your name good sir?',
+        message: 'and what then good sir, what do they call you?',
+        default: 'yourName'
       }
 
     ];
 
     this.prompt(prompts, function (props) {
-      this.go = props.generateAll;
+      this.go = props.status;
       this.moduleName = props.moduleName;
       this.authorName = props.authorName;
 
@@ -55,15 +57,21 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
 
   app: function () {
     this.mkdir('app');
+    this.copy('app/_index.html', 'app/index.html');
+
+    this.mkdir('app/modules');
     this.mkdir('app/images');
     this.mkdir('app/styles');
     this.mkdir('app/scripts');
-    this.mkdir('build');
-
-    this.copy('app/_index.html', 'app/index.html');
     this.copy('app/scripts/config.js', 'app/scripts/config.js');
     this.copy('app/scripts/app.js', 'app/scripts/app.js');
     this.copy('app/scripts/main.js', 'app/scripts/main.js');
+
+    this.mkdir('app/common');
+    this.mkdir('app/common/templates-raw');
+    this.copy('app/common/loading.dust', 'app/scripts/common/templates-raw/loading.dust');
+
+    this.mkdir('build');
 
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
@@ -71,8 +79,8 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
 
   projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc', '.jshintrc');
-    this.copy('gitignore', '.gitignore');
+    this.copy('jshintrc'    , '.jshintrc');
+    this.copy('gitignore'   , '.gitignore');
   }
 });
 
