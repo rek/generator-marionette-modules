@@ -1,9 +1,12 @@
 # generator-marionette-modules [![Build Status](https://secure.travis-ci.org/rek/generator-marionette-modules.png?branch=master)](https://travis-ci.org/rek/generator-marionette-modules)
 
-> [Yeoman](http://yeoman.io) generator
+> [Yeoman](http://yeoman.io) generator. For scaffolding a Marionette app with the Module pattern.
 
 
 ## Getting Started
+
+Lots of decisions have been made for you. This is not so flexable at the moment.
+> We like things like: less, dust, requirejs and mocha.
 
 ### What is Yeoman?
 
@@ -21,7 +24,7 @@ $ npm install -g yo
 
 ### Yeoman Generators
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, this one created the one talked about above.
 
 To install generator-marionette-modules from npm, run:
 
@@ -29,13 +32,13 @@ To install generator-marionette-modules from npm, run:
 $ npm install -g generator-marionette-modules
 ```
 
-Finally, initiate the generator:
+Then initiate the generator:
 
 ```
 $ yo marionette-modules
 ```
 
-To generate a module for our app, simple run:
+Finally, to generate a module for our app, simply run:
 
 ```
 $ yo marionette-modules:module moduleName
@@ -43,7 +46,7 @@ $ yo marionette-modules:module moduleName
 
 ### Getting To Know Yeoman
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced. Though not this generator, for that you will need to raise an issue here.
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
