@@ -44,6 +44,13 @@ ModuleGenerator.prototype.setup = function() {
 };
 
 ModuleGenerator.prototype.files = function() {
+  _.mixin({
+    capitalize: function(string) {
+      return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+    }
+  });
+  this.cname = _.capitalize(this.name);
+
   // console.log(_(this.name).capitalize()+'');
   this.copy('_app.js', 'app/modules/' + this.name + '/app.js');
 
@@ -61,6 +68,10 @@ ModuleGenerator.prototype.files = function() {
   this.copy('test/example.spec.js', 'app/modules/' + this.name + '/test/spec/example.spec.js');
 
   this.copy('templates/layout.dust', 'app/modules/' + this.name + '/templates/' + this.name + '_layout.dust');
+
+  this.copy('entities/_entity.js', 'app/modules/' + this.name + '/entities/' + this.name + '.js');
+  this.copy('list/_controller.js', 'app/modules/' + this.name + '/list/' + this.name + '_controller.js');
+  this.copy('list/_view.js', 'app/modules/' + this.name + '/list/' + this.name + '_view.js');
 }
 
 module.exports = ModuleGenerator;

@@ -1,12 +1,5 @@
 define(function(require) {
     var App = require('app');
-    <%
-        _.mixin({
-          capitalize: function(string) {
-            return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
-          }
-        });
-    %>
     var path = 'modules/<%= name %>/';
 
     requirejs.config({
@@ -27,57 +20,57 @@ define(function(require) {
             this.name = moduleName;
             App.log('Initalize: ' + App.getCurrentRoute(), this.name, 2);
         },
-        define: function (<%= _.capitalize(name) %>App, App, Backbone, Marionette, $, _) { // non interitable
+        define: function (<%= cname %>App, App, Backbone, Marionette, $, _) { // non interitable
             // temp stuff for logging
             // TODO: find a better way to get module name
         }
     });
 
     // create a new sub module
-    App.module("Routers.<%= _.capitalize(name) %>App", function(<%= _.capitalize(name) %>AppRouter, App, Backbone, Marionette, $, _){
-        this.name = 'Routers.<%= _.capitalize(name) %>App';
+    App.module("Routers.<%= cname %>App", function(<%= cname %>AppRouter, App, Backbone, Marionette, $, _){
+        this.name = 'Routers.<%= cname %>App';
 
-        <%= _.capitalize(name) %>AppRouter.Router = Marionette.AppRouter.extend({
+        <%= cname %>AppRouter.Router = Marionette.AppRouter.extend({
             initialize: function () {
                 // App.log('Before Router', RotesAppRouter.name);
                 // start ourselves
                 // App.switchApp('RotesApp', {});
             },
             appRoutes: {
-                ''            : 'list<%= _.capitalize(name) %>',
-                '<%= name %>'       : 'list<%= _.capitalize(name) %>',
-                // '<%= name %>/create': 'create<%= _.capitalize(name) %>',
-                '<%= name %>/:slug'  : 'show<%= _.capitalize(name) %>'
+                ''            : 'list<%= cname %>',
+                '<%= name %>'       : 'list<%= cname %>',
+                // '<%= name %>/create': 'create<%= cname %>',
+                '<%= name %>/:slug'  : 'show<%= cname %>'
             }
         });
 
         var executeAction = function(action, arg){
-            App.switchApp("<%= _.capitalize(name) %>App");
+            App.switchApp("<%= cname %>App");
             action(arg);
             App.execute("set:active:page", "<%= name %>");
         };
 
         var API = {
-            list<%= _.capitalize(name) %>: function(){
+            list<%= cname %>: function(){
                 require(['list_controller'], function(ListController){
-                    App.log('List <%= name %>: Controller loaded, requesting <%= name %>..', <%= _.capitalize(name) %>AppRouter.name, 2);
-                    executeAction(ListController.list<%= _.capitalize(name) %>);
+                    App.log('List <%= name %>: Controller loaded, requesting <%= name %>..', <%= cname %>AppRouter.name, 2);
+                    executeAction(ListController.list<%= cname %>);
                 });
             },
         };
 
         App.on("<%= name %>:list", function(){
           App.navigate("/<%= name %>");
-          API.list<%= _.capitalize(name) %>();
+          API.list<%= cname %>();
         });
 
         App.addInitializer(function(){
-            App.log('Initalizer running: Starting Router', <%= _.capitalize(name) %>AppRouter.name, 2);
-            new <%= _.capitalize(name) %>AppRouter.Router({
+            App.log('Initalizer running: Starting Router', <%= cname %>AppRouter.name, 2);
+            new <%= cname %>AppRouter.Router({
                 controller: API
             });
         });
     });
 
-    return App.<%= _.capitalize(name) %>AppRouter;
+    return App.<%= cname %>AppRouter;
 });
