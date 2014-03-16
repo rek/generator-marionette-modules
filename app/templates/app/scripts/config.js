@@ -1,7 +1,7 @@
 requirejs.config({
     paths: {
         jquery                 : '../bower_components/jquery/dist/jquery.min',
-        underscore             : '../bower_components/lodash/lodash',
+        underscore             : '../bower_components/lodash/dist/lodash',
         backbone               : '../bower_components/backbone/backbone',
         marionette             : '../bower_components/marionette/lib/core/amd/backbone.marionette',
         dust                   : '../bower_components/dustjs-linkedin/lib/dust',

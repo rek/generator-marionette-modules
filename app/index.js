@@ -4,7 +4,6 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
-
 var MarionetteModulesGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require('../package.json');
@@ -56,29 +55,50 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
   },
 
   app: function () {
+    // not fully sure about this:
+    this.connect = {
+      test: {
+        options: {
+            port: 8888
+        }
+      },
+      dist: {
+        options: {
+            port: 8888
+        }
+      }
+    };
+
     this.mkdir('app');
     this.copy('app/_index.html', 'app/index.html');
 
     this.mkdir('app/modules');
     this.mkdir('app/images');
+
     this.mkdir('app/styles');
+    this.mkdir('app/styles/less');
+    this.copy( 'app/styles/bootstrap.less', 'app/styles/less/bootstrap.less');
+    this.copy( 'app/styles/main.less', 'app/styles/less/main.less');
+
     this.mkdir('app/scripts');
-    this.copy('app/scripts/config.js', 'app/scripts/config.js');
-    this.copy('app/scripts/app.js', 'app/scripts/app.js');
-    this.copy('app/scripts/main.js', 'app/scripts/main.js');
+    this.copy( 'app/scripts/config.js', 'app/scripts/config.js');
+    this.copy( 'app/scripts/app.js', 'app/scripts/app.js');
+    this.copy( 'app/scripts/main.js', 'app/scripts/main.js');
 
     this.mkdir('app/common');
     this.mkdir('app/common/templates-raw');
-    this.copy('app/common/loading.dust', 'app/scripts/common/templates-raw/loading.dust');
+    this.copy( 'app/common/loading.dust', 'app/scripts/common/templates-raw/loading.dust');
 
     this.mkdir('build');
 
-    this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
   },
 
   projectfiles: function () {
-    this.copy('_Gruntfile.js', 'Gruntfile.js');
+    this.template('_Gruntfile.js', 'Gruntfile.js');
+
+    this.copy('_package.json', 'package.json');
+    this.copy('_bower.json', 'bower.json');
+
     this.copy('bowerrc'      , '.bowerrc');
     this.copy('editorconfig' , '.editorconfig');
     this.copy('jshintrc'     , '.jshintrc');

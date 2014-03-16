@@ -14,7 +14,7 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
     var banner = '/*\n<%= pkg.name %> <%= pkg.version %>';
         banner += '- <%= pkg.description %>\n<%= pkg.repository.url %>\n';
-        banner += 'Built on <%= grunt.template.today("yyyy-mm-dd") %>\n*/\n';
+        banner += 'Built on <%= (new Date).toISOString().split('T')[0] %>\n*/\n';
 
         // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -362,11 +362,13 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'dustjs',
         'useminPrepare',
         'concurrent:dist',
         'requirejs',
+        'less:production',
         'cssmin',
-        'concat',
+        // 'concat',
         'uglify',
         'copy',
         'rev',
