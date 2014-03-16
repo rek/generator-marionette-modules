@@ -40,7 +40,7 @@ define(function(require) {
                 ''            : 'list<%= cname %>',
                 '<%= name %>'       : 'list<%= cname %>',
                 // '<%= name %>/create': 'create<%= cname %>',
-                '<%= name %>/:slug'  : 'show<%= cname %>'
+                // '<%= name %>/:slug'  : 'show<%= cname %>'
             }
         });
 

@@ -1,35 +1,35 @@
 define(['app', 'list_view'], function (App, View) {
-  App.module('RotesApp.List', function (List, App, Backbone, Marionette, $, _) {
+  App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $, _) {
     List.Controller = {
-      listRotes: function () {
-        require(['common/views', 'entities_rote'], function(CommonViews){
+      list<%= cname %>: function () {
+        require(['common/views', 'entities_<%= name %>'], function(CommonViews){
 
           App.mainRegion.show(new CommonViews.Loading());
 
-          var fetchingRotes = App.request('rote:entities');
+          var fetching<%= cname %> = App.request('rote:entities');
 
-          var rotesListLayout = new View.Layout();
-          // var rotesListPanel = new View.Panel();
+          var <%= name %>ListLayout = new View.Layout();
+          // var <%= name %>ListPanel = new View.Panel();
 
           // require(['entities/common'], function(FilteredCollection){
-            $.when(fetchingRotes).done(function(rotes){
-              App.log('fetched rotes datas', 'App', 1);
+            $.when(fetching<%= cname %>).done(function(<%= name %>){
+              App.log('fetched <%= name %> datas', 'App', 1);
 
-              var rotesListView = new View.Rotes({
-                collection: rotes
+              var <%= name %>ListView = new View.<%= cname %>({
+                collection: <%= name %>
               });
 
-              rotesListLayout.on('show', function(){
-                // rotesListLayout.panelRegion.show(contactsListPanel);
-                rotesListLayout.rotesRegion.show(rotesListView);
+              <%= name %>ListLayout.on('show', function(){
+                // <%= name %>ListLayout.panelRegion.show(contactsListPanel);
+                <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
               });
 
-              rotesListView.on('itemview:contact:show', function(childView, model){
-                // App.trigger('rotes:show', model.get('id'));
+              <%= name %>ListView.on('itemview:contact:show', function(childView, model){
+                // App.trigger('<%= name %>:show', model.get('id'));
               });
 
               // when its all setup, tigger show
-              App.mainRegion.show(rotesListLayout);
+              App.mainRegion.show(<%= name %>ListLayout);
 
             });
 
@@ -37,29 +37,5 @@ define(['app', 'list_view'], function (App, View) {
       }
     }
   });
-  return App.RotesApp.List.Controller;
+  return App.<%= cname %>App.List.Controller;
 });
-
-//   List.Controller = {
-//     showAll: function() {
-//       var func = _.bind(this._showAll, this);
-
-//       $.when(App.request('rotes:entities')).then(func);
-//     },
-// listRotes
-//     _showAll: function(rotes) {
-//       var roteListView = this._getRoteListView(rotes);
-//       // emailListView.on('email:selected', function(view) {
-//         // App.vent.trigger('email:selected', view.model);
-//       // });
-//       App.main.show(roteListView);
-//     },
-
-//     _getRoteListView: function(rotes) {
-//       return new List.Rotes({
-//         collection: rotes
-//       });
-//     }
-//   }
-
-// });

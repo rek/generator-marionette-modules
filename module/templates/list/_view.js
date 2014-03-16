@@ -1,11 +1,11 @@
 define(["app"], function (App) {
-  App.module("RotesApp.List.View", function (View, App, Backbone, Marionette, $, _) {
+  App.module("<%= cname %>App.List.View", function (View, App, Backbone, Marionette, $, _) {
     View.Layout = Marionette.Layout.extend({
-      template: 'rotes_layout',
+      template: '<%= name %>_layout',
 
       regions: {
         panelRegion: "#panel-region",
-        rotesRegion: "#content"
+        <%= name %>Region: "#content"
       }
     });
 
@@ -35,9 +35,9 @@ define(["app"], function (App) {
     //   }
     // });
 
-    View.Rote = Marionette.ItemView.extend({
+    View.<%= cname %> = Marionette.ItemView.extend({
       tagName: "tr",
-      template: 'rotes_list_one',
+      template: '<%= name %>_list_one',
 
       events: {
         "click": "highlightName",
@@ -84,23 +84,23 @@ define(["app"], function (App) {
       }
     });
 
-    var NoRotesView = Marionette.ItemView.extend({
-      template: 'rotes_none',
+    var No<%= cname %>View = Marionette.ItemView.extend({
+      template: '<%= name %>_none',
       tagName: "tr",
       className: "alert"
     });
 
-    View.Rotes = Marionette.CompositeView.extend({
+    View.<%= cname %> = Marionette.CompositeView.extend({
       tagName: "table",
       className: "table table-hover",
-      template: 'rotes_list',
-      emptyView: NoRotesView,
-      itemView: View.Rote,
+      template: '<%= name %>_list',
+      emptyView: No<%= cname %>View,
+      itemView: View.<%= cname %>,
       itemViewContainer: "tbody",
 
       initialize: function(){
         this.listenTo(this.collection, "reset", function(){
-          App.log('reset called', 'rotes list view', 1);
+          App.log('reset called', '<%= name %> list view', 1);
           this.appendHtml = function(collectionView, itemView, index){
             collectionView.$el.append(itemView.el);
           }
@@ -108,7 +108,7 @@ define(["app"], function (App) {
       },
 
       onCompositeCollectionRendered: function(){
-        App.log('rendered called', 'rotes list view', 1);
+        App.log('rendered called', '<%= name %> list view', 1);
         this.appendHtml = function(collectionView, itemView, index){
           collectionView.$el.prepend(itemView.el);
         }
@@ -116,5 +116,5 @@ define(["app"], function (App) {
     });
   });
 
-  return App.RotesApp.List.View;
+  return App.<%= cname %>App.List.View;
 });
