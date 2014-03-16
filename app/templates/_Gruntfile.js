@@ -254,19 +254,19 @@ module.exports = function (grunt) {
             dist: {
             }
         },
-        uglify: {
-            options: {
-                mangle: {
+        // uglify: {
+            // options: {
+                // mangle: {
                     // except: ['jQuery', 'Backbone']
-                },
-                banner: banner,
-            },
-            dist: {
-                files: {
-                    'build/scripts/app.min.js': ['build/scripts/app.js']
-                }
-            }
-        },
+                // },
+                // banner: banner,
+            // },
+            // dist: {
+                // files: {
+                    // 'build/scripts/app.min.js': ['build/scripts/app.js']
+                // }
+            // }
+        // },
         htmlmin: {
             dist: {
                 files: [{
@@ -369,7 +369,7 @@ module.exports = function (grunt) {
         'less:production',
         'cssmin',
         // 'concat',
-        'uglify',
+        // 'uglify', <- require does these 2 better
         'copy',
         'rev',
         'usemin'

@@ -39,7 +39,7 @@ function (Marionette) {
     };
 
     App.getCurrentRoute = function(){
-        // App.log('Get current rote', 'App', 2);
+        App.log('Get current rote', 'App', 3);
         return Backbone.history.fragment;
     };
 
@@ -50,20 +50,17 @@ function (Marionette) {
 
 
     App.on('initialize:after', function (options) {
-// require(['modules/pages/app'], function () {
         if(Backbone.history){
             // note: this is async, so the rest of the init code here will run first
-            require(['modules/rotes/app', 'modules/pages/app'], function () {
-                // Backbone.history.start();
+            // require(['modules/APPNAME/app', 'modules/pages/app'], function () {
                 // Trigger the initial route and enable HTML5 History API support
                 Backbone.history.start({ pushState: true, root: App.root });
 
-                // App.switchApp('RotesApp', {});
-            });
+                // App.switchApp('MyApp', {});
+            // });
         }
 
         App.log('Initialization Finished', 'App', 2);
-// });
     });
 
     /**
