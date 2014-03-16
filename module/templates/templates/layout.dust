@@ -1,0 +1,12 @@
+<div id='layout-template'>
+
+  <header>
+    <h1>{title}</h1>
+  </header>
+
+  <section>
+    <navigation id='menu'></navigation>
+    <article id='content'></article>
+  </section>
+
+</div>

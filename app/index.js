@@ -78,9 +78,11 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
   },
 
   projectfiles: function () {
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc'    , '.jshintrc');
-    this.copy('gitignore'   , '.gitignore');
+    this.copy('_Gruntfile.js', 'Gruntfile.js');
+    this.copy('bowerrc'      , '.bowerrc');
+    this.copy('editorconfig' , '.editorconfig');
+    this.copy('jshintrc'     , '.jshintrc');
+    this.copy('gitignore'    , '.gitignore');
   }
 });
 
