@@ -1,11 +1,11 @@
-define(["app"], function (App) {
-  App.module("<%= cname %>App.List.View", function (View, App, Backbone, Marionette, $, _) {
+define(['app'], function (App) {
+  App.module('<%= cname %>App.List.View', function (View, App, Backbone, Marionette, $, _) {
     View.Layout = Marionette.Layout.extend({
       template: '<%= name %>_layout',
 
       regions: {
-        panelRegion: "#panel-region",
-        <%= name %>Region: "#content"
+        panelRegion: '#panel-region',
+        <%= name %>Region: '#content'
       }
     });
 
@@ -13,21 +13,21 @@ define(["app"], function (App) {
     //   template: panelTpl,
 
     //   triggers: {
-    //     "click button.js-new": "contact:new"
+    //     'click button.js-new': 'contact:new'
     //   },
 
     //   events: {
-    //     "submit #filter-form": "filterContacts"
+    //     'submit #filter-form': 'filterContacts'
     //   },
 
     //   ui: {
-    //     criterion: "input.js-filter-criterion"
+    //     criterion: 'input.js-filter-criterion'
     //   },
 
     //   filterContacts: function(e){
     //     e.preventDefault();
-    //     var criterion = this.$(".js-filter-criterion").val();
-    //     this.trigger("contacts:filter", criterion);
+    //     var criterion = this.$('.js-filter-criterion').val();
+    //     this.trigger('contacts:filter', criterion);
     //   },
 
     //   onSetFilterCriterion: function(criterion){
@@ -36,14 +36,14 @@ define(["app"], function (App) {
     // });
 
     View.<%= cname %> = Marionette.ItemView.extend({
-      tagName: "tr",
+      tagName: 'tr',
       template: '<%= name %>_list_one',
 
       events: {
-        "click": "highlightName",
-        "click td a.js-show": "showClicked",
-        "click td a.js-edit": "editClicked",
-        "click button.js-delete": "deleteClicked"
+        'click': 'highlightName',
+        'click td a.js-show': 'showClicked',
+        'click td a.js-edit': 'editClicked',
+        'click button.js-delete': 'deleteClicked'
       },
 
       flash: function(cssClass){
@@ -56,24 +56,24 @@ define(["app"], function (App) {
       },
 
       highlightName: function(e){
-        this.$el.toggleClass("warning");
+        this.$el.toggleClass('warning');
       },
 
       showClicked: function(e){
         e.preventDefault();
         e.stopPropagation();
-        this.trigger("contact:show", this.model);
+        this.trigger('contact:show', this.model);
       },
 
       editClicked: function(e){
         e.preventDefault();
         e.stopPropagation();
-        this.trigger("contact:edit", this.model);
+        this.trigger('contact:edit', this.model);
       },
 
       deleteClicked: function(e){
         e.stopPropagation();
-        this.trigger("contact:delete", this.model);
+        this.trigger('contact:delete', this.model);
       },
 
       remove: function(){
@@ -86,20 +86,20 @@ define(["app"], function (App) {
 
     var No<%= cname %>View = Marionette.ItemView.extend({
       template: '<%= name %>_none',
-      tagName: "tr",
-      className: "alert"
+      tagName: 'tr',
+      className: 'alert'
     });
 
     View.<%= cname %> = Marionette.CompositeView.extend({
-      tagName: "table",
-      className: "table table-hover",
+      tagName: 'table',
+      className: 'table table-hover',
       template: '<%= name %>_list',
       emptyView: No<%= cname %>View,
       itemView: View.<%= cname %>,
-      itemViewContainer: "tbody",
+      itemViewContainer: 'tbody',
 
       initialize: function(){
-        this.listenTo(this.collection, "reset", function(){
+        this.listenTo(this.collection, 'reset', function(){
           App.log('reset called', '<%= name %> list view', 1);
           this.appendHtml = function(collectionView, itemView, index){
             collectionView.$el.append(itemView.el);

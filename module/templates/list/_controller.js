@@ -6,7 +6,7 @@ define(['app', 'list_view'], function (App, View) {
 
           App.mainRegion.show(new CommonViews.Loading());
 
-          var fetching<%= cname %> = App.request('rote:entities');
+          var fetching<%= cname %> = App.request('<%= name %>:entities');
 
           var <%= name %>ListLayout = new View.Layout();
           // var <%= name %>ListPanel = new View.Panel();
