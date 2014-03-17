@@ -96,6 +96,9 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
   projectfiles: function () {
     this.template('_Gruntfile.js', 'Gruntfile.js');
 
+    this.copy('_README', 'README.md');
+    this.copy('_LICENSE', 'LICENSE');
+
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
 

@@ -8,7 +8,7 @@ define(function(require) {
             list_controller : path + 'list/list_controller',
             show_view       : path + 'show/show_view',
             show_controller : path + 'show/show_controller',
-            entities_<%= name %>   : path + 'entities/<%= name %>',
+            entities_<%= name %>  : path + 'entities/<%= name %>',
         }
     });
 
@@ -16,11 +16,11 @@ define(function(require) {
     App.module('App', {
         startWithParent: false,
         // only avaiable with object literal def of module;
-        initialize: function (options, moduleName, app) { // on prototype chain thus interitable
+        initialize: function (options, moduleName, app) { // on prototype chain thus inheritable
             this.name = moduleName;
             App.log('Initalize: ' + App.getCurrentRoute(), this.name, 2);
         },
-        define: function (<%= cname %>App, App, Backbone, Marionette, $, _) { // non interitable
+        define: function (<%= cname %>App, App, Backbone, Marionette, $, _) { // non inheritable
             // temp stuff for logging
             // TODO: find a better way to get module name
         }
@@ -59,6 +59,7 @@ define(function(require) {
             },
         };
 
+        // also watch for manual events:
         App.on("<%= name %>:list", function(){
           App.navigate("/<%= name %>");
           API.list<%= cname %>();
