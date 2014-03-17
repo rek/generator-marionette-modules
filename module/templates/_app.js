@@ -27,7 +27,7 @@ define(function(require) {
     });
 
     // create a new sub module
-    App.module("Routers.<%= cname %>App", function(<%= cname %>AppRouter, App, Backbone, Marionette, $, _){
+    App.module('Routers.<%= cname %>App', function(<%= cname %>AppRouter, App, Backbone, Marionette, $, _){
         this.name = 'Routers.<%= cname %>App';
 
         <%= cname %>AppRouter.Router = Marionette.AppRouter.extend({
@@ -45,9 +45,9 @@ define(function(require) {
         });
 
         var executeAction = function(action, arg){
-            App.switchApp("<%= cname %>App");
+            App.switchApp('<%= cname %>App');
             action(arg);
-            App.execute("set:active:page", "<%= name %>");
+            App.execute('set:active:page', '<%= name %>');
         };
 
         var API = {
@@ -60,8 +60,8 @@ define(function(require) {
         };
 
         // also watch for manual events:
-        App.on("<%= name %>:list", function(){
-          App.navigate("/<%= name %>");
+        App.on('<%= name %>:list', function(){
+          App.navigate('/<%= name %>');
           API.list<%= cname %>();
         });
 
