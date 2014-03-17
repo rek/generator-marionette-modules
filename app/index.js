@@ -85,8 +85,7 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/images');
     this.mkdir('app/scripts/modules');
 
-    this.mkdir('app/common');
-    this.mkdir('app/common/templates-raw');
+    this.mkdir('app/scripts/common/templates-raw');
     this.copy( 'app/common/loading.dust', 'app/scripts/common/templates-raw/loading.dust');
 
     this.mkdir('build');
