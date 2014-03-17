@@ -70,10 +70,7 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
     };
 
     this.mkdir('app');
-    this.copy('app/_index.html', 'app/index.html');
-
-    this.mkdir('app/modules');
-    this.mkdir('app/images');
+    this.copy( 'app/_index.html', 'app/index.html');
 
     this.mkdir('app/styles');
     this.mkdir('app/styles/less');
@@ -84,6 +81,9 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
     this.copy( 'app/scripts/config.js', 'app/scripts/config.js');
     this.copy( 'app/scripts/app.js', 'app/scripts/app.js');
     this.copy( 'app/scripts/main.js', 'app/scripts/main.js');
+
+    this.mkdir('app/images');
+    this.mkdir('app/scripts/modules');
 
     this.mkdir('app/common');
     this.mkdir('app/common/templates-raw');
