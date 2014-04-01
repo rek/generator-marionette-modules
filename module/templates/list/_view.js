@@ -8,14 +8,14 @@ define(['app'], function (App) {
         <%= name %>Region: '#content'
       },
 
-      // flash: function(cssClass){
-      //   var $view = this.$el;
-      //   $view.hide().toggleClass(cssClass).fadeIn(800, function(){
-      //     setTimeout(function(){
-      //       $view.toggleClass(cssClass)
-      //     }, 500);
-      //   });
-      // },
+      flash: function(cssClass){  // fade in and out.
+        var $view = this.$el;
+        $view.hide().toggleClass(cssClass).fadeIn(800, function(){
+          setTimeout(function(){
+            $view.toggleClass(cssClass)
+          }, 500);
+        });
+      },
     });
 
     // View.Panel = Marionette.ItemView.extend({
