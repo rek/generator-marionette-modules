@@ -32,12 +32,11 @@ define(['app'], function(App) {
 
     var initialize<%= cname %>s = function() {
       App.log('Initializing Fake <%= cname %>s', contextName, 1);
-      var <%= cname %> = Backbone.Model.extend({});
 
-      var fake<%= cname %>s = [
-          new <%= cname %>({ name: 'First <%= cname %>', slug: 'page-1' }),
-          new <%= cname %>({ name: 'Second <%= cname %>', slug: 'page-2' })
-      ]
+      var fake<%= cname %>s = new Entities.<%= cname %>sCollection([
+          { name: 'First <%= cname %>',  slug: 'page-1' },
+          { name: 'Second <%= cname %>', slug: 'page-2' }
+      ]);
 
       return fake<%= cname %>s;
     };
