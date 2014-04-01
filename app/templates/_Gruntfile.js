@@ -16,17 +16,18 @@ module.exports = function (grunt) {
         banner += '- <%= pkg.description %>\n<%= pkg.repository.url %>\n';
         banner += 'Built on <%= (new Date).toISOString().split('T')[0] %>\n*/\n';
 
-        // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    // Load grunt tasks automatically
+    require('load-grunt-tasks')(grunt);
 
-    // configurable paths
-    var yeomanConfig = {
-        app: 'app',
-        dist: 'build'
-    };
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
 
     grunt.initConfig({
-        yeoman: yeomanConfig,
+        config: {
+            // Configurable paths
+            app: 'www',
+            dist: 'www'
+        },
         watch: {
             options: {
                 nospawn: true,
@@ -47,6 +48,9 @@ module.exports = function (grunt) {
                 ],
                 tasks: 'dustjs'
             },
+            gruntfile: {
+                files: ['Gruntfile.js']
+            },
             livereload: {
                 files: [
                     'app/*.html',
@@ -61,39 +65,35 @@ module.exports = function (grunt) {
         },
         connect: {
             options: {
-                port: 1212,
-                // change this to '0.0.0.0' to access the server from outside
-                // hostname: 'localhost'
-                hostname: '0.0.0.0'
+                port: 9000,
+                livereload: 35729,
+                // Change this to '0.0.0.0' to access the server from outside
+                hostname: 'localhost'
             },
             livereload: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            lrSnippet,
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'app')
-                        ];
-                    }
+                    open: true,
+                    base: [
+                        '.tmp',
+                        '<%= config.app %>'
+                    ]
                 }
             },
             test: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
-                        ];
-                    }
+                    port: 9001,
+                    base: [
+                        '.tmp',
+                        'test',
+                        '<%= config.app %>'
+                    ]
                 }
             },
             dist: {
                 options: {
-                    middleware: function (connect) {
-                        return [
-                            mountFolder(connect, 'dist')
-                        ];
-                    }
+                    open: true,
+                    base: '<%= config.dist %>',
+                    livereload: false
                 }
             }
         },
@@ -269,11 +269,21 @@ module.exports = function (grunt) {
         // },
         htmlmin: {
             dist: {
+                options: {
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true,
+                    removeCommentsFromCDATA: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true
+                },
                 files: [{
                     expand: true,
-                    cwd: 'app',
-                    src: '*.html',
-                    dest: 'build'
+                    cwd: '<%= config.app %>',
+                    src: '{,*/}*.html',
+                    dest: '<%= config.dist %>'
                 }]
             }
         },
@@ -307,8 +317,8 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: 'app',
-                    dest: 'build',
+                    cwd: '<%= config.app %>',
+                    dest: '<%= config.dist %>',
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',

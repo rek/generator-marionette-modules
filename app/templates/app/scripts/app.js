@@ -89,7 +89,7 @@ function (Marionette) {
     App.log = function(message, domain, level){
         if(App.debug < level) { return; }
         if(typeof message !== 'string'){
-            console.log('Fancy object' + domain, message);
+            console.log('Fancy object (' + domain + ')', message);
         } else {
             console.log((domain || false ? '('+domain+') ' : '') + message);
         }
