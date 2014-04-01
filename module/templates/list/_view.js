@@ -22,21 +22,21 @@ define(['app'], function (App) {
     //   template: panelTpl,
 
     //   triggers: {
-    //     'click button.js-new': 'contact:new'
+    //     'click button.js-new': '<%= name %>:new'
     //   },
 
     //   events: {
-    //     'submit #filter-form': 'filterContacts'
+    //     'submit #filter-form': 'filter<%= cname %>s'
     //   },
 
     //   ui: {
     //     criterion: 'input.js-filter-criterion'
     //   },
 
-    //   filterContacts: function(e){
+    //   filter<%= cname %>s: function(e){
     //     e.preventDefault();
     //     var criterion = this.$('.js-filter-criterion').val();
-    //     this.trigger('contacts:filter', criterion);
+    //     this.trigger('<%= name %>s:filter', criterion);
     //   },
 
     //   onSetFilterCriterion: function(criterion){
@@ -62,12 +62,12 @@ define(['app'], function (App) {
       showClicked: function(e) {
         e.preventDefault();
         e.stopPropagation();
-        this.trigger('contact:show', this.model);
+        this.trigger('<%= name %>:show', this.model);
       },
 
       deleteClicked: function(e) {
         e.stopPropagation();
-        this.trigger('contact:delete', this.model);
+        this.trigger('<%= name %>:delete', this.model);
       },
 
       remove: function() { // automatically called when this model is destroy() 'ed
