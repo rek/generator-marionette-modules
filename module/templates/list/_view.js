@@ -70,7 +70,7 @@ define(['app'], function (App) {
         this.trigger('contact:delete', this.model);
       },
 
-      remove: function(){
+      remove: function() { // automatically called when this model is destroy() 'ed
         var self = this;
         this.$el.fadeOut(function() {
           Marionette.ItemView.prototype.remove.call(self);

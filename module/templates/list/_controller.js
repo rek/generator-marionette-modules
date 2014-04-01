@@ -27,6 +27,11 @@ define(['app', 'list_view'], function (App, View) {
             //   App.trigger('<%= name %>:show', model.get('id'));
             // });
 
+            <%= name %>ListView.on("itemview:<%= name %>:delete", function(childView, model){
+              // auto magically call's remove in the view.
+              model.destroy();
+            });
+
             // when the data is here, show it in this region
             <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
 
