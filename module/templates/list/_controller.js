@@ -2,7 +2,7 @@ define(['app', 'list_view'], function (App, View) {
   App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $, _) {
     List.Controller = {
       list<%= cname %>: function () {
-        require(['common/views', 'entities_<%= name %>'], function(CommonViews){
+        require(['common/views', 'entities_<%= name %>'], function(CommonViews) {
 
           App.mainRegion.show(new CommonViews.Loading());
 
@@ -11,27 +11,29 @@ define(['app', 'list_view'], function (App, View) {
           var <%= name %>ListLayout = new View.Layout();
           // var <%= name %>ListPanel = new View.Panel();
 
-          // require(['entities/common'], function(FilteredCollection){
-            $.when(fetching<%= cname %>).done(function(<%= name %>){
-              App.log('fetched <%= name %> datas', 'App', 1);
+          $.when(fetching<%= cname %>).done(function(<%= name %>) {
+            // App.log('Fetched <%= name %> data', 'App', 1);
 
-              var <%= name %>ListView = new View.<%= cname %>({
-                collection: <%= name %>
-              });
-
-              <%= name %>ListLayout.on('show', function(){
-                // <%= name %>ListLayout.panelRegion.show(contactsListPanel);
-                <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
-              });
-
-              <%= name %>ListView.on('itemview:contact:show', function(childView, model){
-                // App.trigger('<%= name %>:show', model.get('id'));
-              });
-
-              // when its all setup, tigger show
-              App.mainRegion.show(<%= name %>ListLayout);
-
+            var <%= name %>ListView = new View.<%= cname %>({
+              collection: <%= name %>
             });
+
+            // <%= name %>ListLayout.on('show', function(){
+            //   <%= name %>ListLayout.panelRegion.show(contactsListPanel);
+            //   <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
+            // });
+
+            // <%= name %>ListView.on('itemview:contact:show', function(childView, model){
+            //   App.trigger('<%= name %>:show', model.get('id'));
+            // });
+
+            // when the data is here, show it in this region
+            <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
+
+          });
+
+          // show the whole layout
+          App.mainRegion.show(<%= name %>ListLayout);
 
         });
       }
