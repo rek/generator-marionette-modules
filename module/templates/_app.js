@@ -3,6 +3,7 @@ define(function(require) {
     var path = 'modules/<%= name %>/';
 
     requirejs.config({
+        baseUrl: 'scripts/',
         paths: {
             list_view       : path + 'list/list_view',
             list_controller : path + 'list/list_controller',
