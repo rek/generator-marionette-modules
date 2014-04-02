@@ -1,4 +1,1 @@
-<div class="<%= name %>s">
-
-
-</div>
+<div class="<%= name %>_list"></div>

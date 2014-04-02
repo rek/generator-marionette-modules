@@ -46,14 +46,13 @@ define(['app'], function (App) {
 
     View.<%= cname %> = Marionette.ItemView.extend({
       tagName: 'div',
-      template: 'show',
+      template: 'list_one',
 
       events: {
         'click': 'highlightName',
         'click td a.js-show': 'showClicked',
         'click button.js-delete': 'deleteClicked'
       },
-
 
       highlightName: function(e) {
         this.$el.toggleClass('warning');
@@ -80,17 +79,17 @@ define(['app'], function (App) {
 
     var No<%= cname %>View = Marionette.ItemView.extend({
       template: '<%= name %>_none',
-      // tagName: 'tr',
+      // tagName: 'div',
       className: 'alert'
     });
 
     View.<%= cname %> = Marionette.CompositeView.extend({
-      // tagName: 'table',
-      // className: 'table table-hover',
+      tagName: 'div',
+      className: '',
       template: 'list',
       emptyView: No<%= cname %>View,
       itemView: View.<%= cname %>,
-      // itemViewContainer: 'tbody',
+      itemViewContainer: '.<%= name %>_list',
 
       initialize: function(){
         this.listenTo(this.collection, 'reset', function() {
