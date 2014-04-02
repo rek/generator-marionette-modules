@@ -26,14 +26,14 @@ define(['app'], function(App) {
     });
 
     Entities.<%= cname %>Collection = Backbone.Collection.extend({
-      url: '<%= name %>',
+      url: '/',
       model: Entities.<%= cname %>
     });
 
     var initialize<%= cname %>s = function() {
       App.log('Initializing Fake <%= cname %>s', contextName, 1);
 
-      var fake<%= cname %>s = new Entities.<%= cname %>sCollection([
+      var fake<%= cname %>s = new Entities.<%= cname %>Collection([
           { name: 'First <%= cname %>',  slug: 'page-1' },
           { name: 'Second <%= cname %>', slug: 'page-2' }
       ]);

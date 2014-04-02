@@ -19,11 +19,11 @@ define(['app', 'list_view'], function (App, View) {
             });
 
             // <%= name %>ListLayout.on('show', function(){
-            //   <%= name %>ListLayout.panelRegion.show(contactsListPanel);
+            //   <%= name %>ListLayout.panelRegion.show(<%= name %>sListPanel);
             //   <%= name %>ListLayout.<%= name %>Region.show(<%= name %>ListView);
             // });
 
-            // <%= name %>ListView.on('itemview:contact:show', function(childView, model){
+            // <%= name %>ListView.on('itemview:<%= name %>:show', function(childView, model){
             //   App.trigger('<%= name %>:show', model.get('id'));
             // });
 
