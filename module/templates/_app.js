@@ -22,10 +22,10 @@ define(function(require) {
             this.name = moduleName;
             App.log('Initalize: ' + App.getCurrentRoute(), this.name, 2);
         },
-        define: function(<%= cname %>App, App, Backbone, Marionette, $, _) { // non inheritable
+        // define: function(<%= cname %>App, App, Backbone, Marionette, $, _) { // non inheritable
             // temp stuff for logging
             // TODO: find a better way to get module name
-        }
+        // }
     });
 
     // create a new sub module
@@ -34,9 +34,9 @@ define(function(require) {
 
         <%= cname %>AppRouter.Router = Marionette.AppRouter.extend({
             initialize: function() {
-                // App.log('Before Router', RotesAppRouter.name);
+                // App.log('Before Router', <%= cname %>AppRouter.name);
                 // start ourselves
-                // App.switchApp('RotesApp', {});
+                // App.switchApp('<%= cname %>App', {});
             },
             appRoutes: {
                 '': 'list<%= cname %>',
