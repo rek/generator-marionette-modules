@@ -14,7 +14,7 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
     var banner = '/*\n<%= pkg.name %> <%= pkg.version %>';
         banner += '- <%= pkg.description %>\n<%= pkg.repository.url %>\n';
-        banner += 'Built on <%= (new Date).toISOString().split('T')[0] %>\n*/\n';
+        banner += 'Built on <%= (new Date).toISOString().split("T")[0] %>\n*/\n';
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);

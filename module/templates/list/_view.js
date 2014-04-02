@@ -46,7 +46,7 @@ define(['app'], function (App) {
 
     View.<%= cname %> = Marionette.ItemView.extend({
       tagName: 'div',
-      template: '<%= name %>_list_one',
+      template: 'show',
 
       events: {
         'click': 'highlightName',
@@ -87,7 +87,7 @@ define(['app'], function (App) {
     View.<%= cname %> = Marionette.CompositeView.extend({
       // tagName: 'table',
       // className: 'table table-hover',
-      template: '<%= name %>_list',
+      template: 'list',
       emptyView: No<%= cname %>View,
       itemView: View.<%= cname %>,
       // itemViewContainer: 'tbody',
