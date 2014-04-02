@@ -69,7 +69,8 @@ ModuleGenerator.prototype.files = function() {
 
   this.copy('templates/layout.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_layout.dust');
   this.copy('templates/_list.dust', 'app/scripts/modules/' + this.name + '/templates/list.dust');
-  this.copy('templates/_list_one.dust', 'app/scripts/modules/' + this.name + '/templates/show.dust');
+  this.copy('templates/_list_one.dust', 'app/scripts/modules/' + this.name + '/templates/list_one.dust');
+  this.copy('templates/show.dust', 'app/scripts/modules/' + this.name + '/templates/show.dust');
 
   this.copy('entities/_entity.js', 'app/scripts/modules/' + this.name + '/entities/' + this.name + '.js');
   this.copy('list/_controller.js', 'app/scripts/modules/' + this.name + '/list/list_controller.js');
