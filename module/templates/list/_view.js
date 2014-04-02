@@ -1,113 +1,114 @@
-define(['app'], function (App) {
-  App.module('<%= cname %>App.List.View', function (View, App, Backbone, Marionette, $, _) {
-    View.Layout = Marionette.Layout.extend({
-      template: '<%= name %>_layout',
+define(['app'], function(App) {
+    'use strict';
+    App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette, $, _) {
+        View.Layout = Marionette.Layout.extend({
+            template: '<%= name %>_layout',
 
-      regions: {
-        panelRegion: '#panel-region',
-        <%= name %>Region: '#content'
-      },
+            regions: {
+                panelRegion: '#panel-region',
+                <%= name %>Region: '#content'
+            },
 
-      flash: function(cssClass) {  // fade in and out.
-        var $view = this.$el;
-        $view.hide().toggleClass(cssClass).fadeIn(800, function() {
-          setTimeout(function() {
-            $view.toggleClass(cssClass)
-          }, 500);
+            flash: function(cssClass) { // fade in and out.
+                var $view = this.$el;
+                $view.hide().toggleClass(cssClass).fadeIn(800, function() {
+                    setTimeout(function() {
+                        $view.toggleClass(cssClass);
+                    }, 500);
+                });
+            },
         });
-      },
-    });
 
-    // View.Panel = Marionette.ItemView.extend({
-    //   template: panelTpl,
+        // View.Panel = Marionette.ItemView.extend({
+        //   template: panelTpl,
 
-    //   triggers: {
-    //     'click button.js-new': '<%= name %>:new'
-    //   },
+        //   triggers: {
+        //     'click button.js-new': '<%= name %>:new'
+        //   },
 
-    //   events: {
-    //     'submit #filter-form': 'filter<%= cname %>s'
-    //   },
+        //   events: {
+        //     'submit #filter-form': 'filter<%= cname %>s'
+        //   },
 
-    //   ui: {
-    //     criterion: 'input.js-filter-criterion'
-    //   },
+        //   ui: {
+        //     criterion: 'input.js-filter-criterion'
+        //   },
 
-    //   filter<%= cname %>s: function(e){
-    //     e.preventDefault();
-    //     var criterion = this.$('.js-filter-criterion').val();
-    //     this.trigger('<%= name %>s:filter', criterion);
-    //   },
+        //   filter<%= cname %>s: function(e){
+        //     e.preventDefault();
+        //     var criterion = this.$('.js-filter-criterion').val();
+        //     this.trigger('<%= name %>s:filter', criterion);
+        //   },
 
-    //   onSetFilterCriterion: function(criterion){
-    //     this.ui.criterion.val(criterion);
-    //   }
-    // });
+        //   onSetFilterCriterion: function(criterion){
+        //     this.ui.criterion.val(criterion);
+        //   }
+        // });
 
-    View.<%= cname %> = Marionette.ItemView.extend({
-      tagName: 'div',
-      template: 'list_one',
+        View.<%= cname %> = Marionette.ItemView.extend({
+            tagName: 'div',
+            template: 'list_one',
 
-      events: {
-        'click': 'highlightName',
-        'click td a.js-show': 'showClicked',
-        'click button.js-delete': 'deleteClicked'
-      },
+            events: {
+                'click': 'highlightName',
+                'click td a.js-show': 'showClicked',
+                'click button.js-delete': 'deleteClicked'
+            },
 
-      highlightName: function(e) {
-        this.$el.toggleClass('warning');
-      },
+            highlightName: function(e) {
+                this.$el.toggleClass('warning');
+            },
 
-      showClicked: function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.trigger('<%= name %>:show', this.model);
-      },
+            showClicked: function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.trigger('<%= name %>:show', this.model);
+            },
 
-      deleteClicked: function(e) {
-        e.stopPropagation();
-        this.trigger('<%= name %>:delete', this.model);
-      },
+            deleteClicked: function(e) {
+                e.stopPropagation();
+                this.trigger('<%= name %>:delete', this.model);
+            },
 
-      remove: function() { // automatically called when this model is destroy() 'ed
-        var self = this;
-        this.$el.fadeOut(function() {
-          Marionette.ItemView.prototype.remove.call(self);
+            remove: function() { // automatically called when this model is destroy() 'ed
+                var self = this;
+                this.$el.fadeOut(function() {
+                    Marionette.ItemView.prototype.remove.call(self);
+                });
+            }
         });
-      }
-    });
 
-    var No<%= cname %>View = Marionette.ItemView.extend({
-      template: '<%= name %>_none',
-      // tagName: 'div',
-      className: 'alert'
-    });
-
-    View.<%= cname %> = Marionette.CompositeView.extend({
-      tagName: 'div',
-      className: '',
-      template: 'list',
-      emptyView: No<%= cname %>View,
-      itemView: View.<%= cname %>,
-      itemViewContainer: '.<%= name %>_list',
-
-      initialize: function(){
-        this.listenTo(this.collection, 'reset', function() {
-          App.log('reset called', '<%= name %> list view', 1);
-          this.appendHtml = function(collectionView, itemView, index){
-            collectionView.$el.append(itemView.el);
-          }
+        var No<%= cname %>View = Marionette.ItemView.extend({
+            template: '<%= name %>_none',
+            // tagName: 'div',
+            className: 'alert'
         });
-      },
 
-      onCompositeCollectionRendered: function() {
-        App.log('rendered called', '<%= name %> list view', 1);
-        this.appendHtml = function(collectionView, itemView, index){
-          collectionView.$el.prepend(itemView.el);
-        }
-      }
+        View.<%= cname %> = Marionette.CompositeView.extend({
+            tagName: 'div',
+            className: '',
+            template: 'list',
+            emptyView: No<%= cname %>View,
+            itemView: View.<%= cname %> ,
+            itemViewContainer: '.<%= name %>_list',
+
+            initialize: function() {
+                this.listenTo(this.collection, 'reset', function() {
+                    App.log('reset called', '<%= name %> list view', 1);
+                    this.appendHtml = function(collectionView, itemView, index) {
+                        collectionView.$el.append(itemView.el);
+                    };
+                });
+            },
+
+            onCompositeCollectionRendered: function() {
+                App.log('rendered called', '<%= name %> list view', 1);
+                this.appendHtml = function(collectionView, itemView, index) {
+                    collectionView.$el.prepend(itemView.el);
+                };
+            }
+        });
     });
-  });
 
-  return App.<%= cname %>App.List.View;
+    return App.<%= cname %>App.List.View;
 });

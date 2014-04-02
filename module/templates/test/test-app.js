@@ -1,14 +1,14 @@
-/*global define */
 'use strict';
 
 define([
-    'marionette',
-],
+        'marionette',
+    ],
 
-function (Marionette) {
+    function(Marionette) {
 
-    var App = new Backbone.Marionette.Application();
+        var App = new Backbone.Marionette.Application();
 
-    return App;
+        return App;
 
-});
+    }
+);

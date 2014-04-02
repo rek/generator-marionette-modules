@@ -1,9 +1,7 @@
 // Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
 'use strict';
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
+
+require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -11,10 +9,10 @@ var mountFolder = function (connect, dir) {
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     var banner = '/*\n<%= pkg.name %> <%= pkg.version %>';
-        banner += '- <%= pkg.description %>\n<%= pkg.repository.url %>\n';
-        banner += 'Built on <%= (new Date).toISOString().split("T")[0] %>\n*/\n';
+    banner += '- <%= pkg.description %>\n<%= pkg.repository.url %>\n';
+    banner += 'Built on <%= (new Date).toISOString().split("T")[0] %>\n*/\n';
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -25,8 +23,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         config: {
             // Configurable paths
-            app: 'www',
-            dist: 'www'
+            app: 'app',
+            dist: 'dist'
         },
         watch: {
             options: {
@@ -116,7 +114,7 @@ module.exports = function (grunt) {
             server: '.tmp'
         },
         coffee: {
-            glob_to_multiple: {
+            'glob_to_multiple': {
                 expand: true,
                 flatten: false,
                 cwd: 'app/scripts/coffee',
@@ -183,8 +181,8 @@ module.exports = function (grunt) {
                 options: {
                     baseUrl: 'app/scripts',
                     out: 'build/scripts/app.js',
-                    mainConfigFile: "app/scripts/config.js",
-                    name: "../../node_modules/almond/almond",
+                    mainConfigFile: 'app/scripts/config.js',
+                    name: '../../node_modules/almond/almond',
                     optimize: 'none',
                     preserveLicenseComments: false,
                     useStrict: true,
@@ -251,21 +249,20 @@ module.exports = function (grunt) {
                 separator: ';\n',
                 banner: banner
             },
-            dist: {
-            }
+            dist: {}
         },
         // uglify: {
-            // options: {
-                // mangle: {
-                    // except: ['jQuery', 'Backbone']
-                // },
-                // banner: banner,
-            // },
-            // dist: {
-                // files: {
-                    // 'build/scripts/app.min.js': ['build/scripts/app.js']
-                // }
-            // }
+        // options: {
+        // mangle: {
+        // except: ['jQuery', 'Backbone']
+        // },
+        // banner: banner,
+        // },
+        // dist: {
+        // files: {
+        // 'build/scripts/app.min.js': ['build/scripts/app.js']
+        // }
+        // }
         // },
         htmlmin: {
             dist: {
@@ -308,7 +305,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        mocha_phantomjs: {
+        'mocha_phantomjs': {
             all: ['app/scripts/modules/{,*/}test/*.html']
         },
         // Put files not handled in other tasks here
@@ -343,7 +340,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('server', function (target) {
+    grunt.registerTask('server', function(target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
