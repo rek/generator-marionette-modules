@@ -59,11 +59,17 @@ define([
                 // note: this is async, so the rest of the init code here will run first
                 // require(['modules/APPNAME/app', 'modules/pages/app'], function () {
                 // Trigger the initial route and enable HTML5 History API support
-                Backbone.history.start({
-                    pushState: true,
-                    root: App.root
-                });
+                // Backbone.history.start({
+                //     pushState: true,
+                //     root: App.root
+                // });
 
+                Backbone.history.start();
+
+                // set a default route
+                if (App.getCurrentRoute() === '') {
+                    App.trigger('MODULE:list');
+                }
                 // App.switchApp('MyApp', {});
                 // });
             }

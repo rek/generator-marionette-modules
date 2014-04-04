@@ -1,3 +1,5 @@
+# Generated on <%= (new Date).toISOString().split('T')[0] %> using <%= pkg.name %> <%= pkg.version %>
+
 # <%= moduleName %> [![Build Status](https://secure.travis-ci.org/<%= authorName %>/<%= _.slugify(moduleName) %>.png?branch=master)](https://travis-ci.org/<%= authorName %>/<%= _.slugify(moduleName) %>)
 
 > a Marionette app with the Module pattern!

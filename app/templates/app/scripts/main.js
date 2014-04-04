@@ -3,6 +3,8 @@ require([
         'backbone',
         'app',
         'marionette',
+        'dust',
+        'dustMarionette',
         'templates',
     ],
 

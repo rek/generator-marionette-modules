@@ -86,19 +86,20 @@ var MarionetteModulesGenerator = yeoman.generators.Base.extend({
         this.copy('app/common/loading.dust', 'app/scripts/common/templates-raw/loading.dust');
         this.copy('app/common/views.js', 'app/scripts/common/views.js');
 
+        this.directory('grunt', 'grunt');
+
         this.mkdir('build');
 
     },
 
     projectfiles: function() {
-        this.template('_Gruntfile.js', 'Gruntfile.js');
-
         this.copy('_README', 'README.md');
         this.copy('_LICENSE', 'LICENSE');
 
         this.copy('_package.json', 'package.json');
         this.copy('_bower.json', 'bower.json');
 
+        this.copy('Gruntfile.js', 'Gruntfile.js');
         this.copy('bowerrc', '.bowerrc');
         this.copy('editorconfig', '.editorconfig');
         this.copy('jshintrc', '.jshintrc');
