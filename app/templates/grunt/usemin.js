@@ -1,10 +1,12 @@
+'use strict';
+
 module.exports = {
-    html: ['<%= config.dist %>/*.html'],
-    css: ['<%= config.dist %>/styles/{,*/}*.css'],
+    html: ['<%= settings.dist %>/*.html.temp'],
+    css: ['<%= settings.dist %>/styles/{,*/}*.css'],
     options: {
         assetsDirs: [
-            '<%= config.dist %>',
-            '<%= config.dist %>/styles'
+            '<%= settings.dist %>',
+            '<%= settings.dist %>/styles'
         ],
     }
 };

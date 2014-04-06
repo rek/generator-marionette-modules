@@ -1,10 +1,12 @@
+'use strict';
+
 module.exports = {
     dist: {
         files: [{
             expand: true,
             dot: true,
-            cwd: '<%= config.app %>',
-            dest: '<%= config.dist %>',
+            cwd: '<%= settings.app %>',
+            dest: '<%= settings.dist %>',
             src: [
                 // '*.{ico,txt}',
                 '.htaccess',
@@ -14,7 +16,16 @@ module.exports = {
         }]
     },
     requirejs: {
-        src: '<%= config.app %>/bower_components/requirejs/require.js',
-        dest: '<%= config.dist %>/bower_components/requirejs/require.js'
+        src: '<%= settings.app %>/bower_components/requirejs/require.js',
+        dest: '<%= settings.dist %>/bower_components/requirejs/require.js'
+    },
+    index: { // remove the livereload script tag
+        src: '<%= settings.dist %>/index.html.temp',
+        dest: '<%= settings.dist %>/index.html',
+        options: {
+            process: function(content) {
+                return content.replace(/<script>require\(\[\"\/\/localhost:35729\/livereload.js\"\]\);<\/script>/g, '');
+            }
+        }
     }
 };

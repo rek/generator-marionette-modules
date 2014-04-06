@@ -1,3 +1,6 @@
+/*global grunt */
+'use strict';
+
 module.exports = {
     'default': [
         'watch'
@@ -5,6 +8,8 @@ module.exports = {
 
     'test': [
         // 'clean:server',
+        'jshint',
+
         'connect:test',
         'mocha_phantomjs',
     ],
@@ -16,16 +21,15 @@ module.exports = {
         'useminPrepare',   // concat to prepare for cssmin
         'concurrent:dist', // runs: imagemin, svgmin, htmlmin and cssmin
             // 'concat',
-            // 'uglify', <- require does these 2 better
-        'copy',            // copy any extra files we need
+            // 'uglify', <- requirejs does these 2 better
+        'copy:dist',       // copy any extra files we need
+        'copy:requirejs',
         'rev',             // rename them to bust cache
         'requirejs',
         'usemin',
-    ],
-
-    'default': [
-        'jshint',
-        'test'
+        'copy:index',
+        'htmlmin:deploy',
+        'clean:postBuild'
     ],
 
     'server': function(target) {

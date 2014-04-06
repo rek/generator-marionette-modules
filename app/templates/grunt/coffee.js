@@ -1,10 +1,12 @@
+'use strict';
+
 module.exports = {
     'glob_to_multiple': {
         expand: true,
         flatten: false,
-        cwd: '<%= config.app %>/scripts/coffee',
+        cwd: '<%= settings.app %>/scripts/coffee',
         src: ['{,*/}*.coffee'],
-        dest: '<%= config.app %>/scripts',
+        dest: '<%= settings.app %>/scripts',
         ext: '.js'
     },
-}
+};

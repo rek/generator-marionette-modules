@@ -1,10 +1,12 @@
+'use strict';
+
 module.exports = {
     dist: {
         options: {
 
             modules: [{name: 'config'}],
-            dir: '<%= config.dist %>/scripts',
-            baseUrl: '<%= config.app %>/scripts',
+            dir: '<%= settings.dist %>/scripts',
+            baseUrl: '<%= settings.app %>/scripts',
             findNestedDependencies: true,
 
             // optimize: 'none',
@@ -13,7 +15,7 @@ module.exports = {
             useStrict: true,
             removeCombined: true,
             wrapShim: true,
-            mainConfigFile: '<%= config.app %>/scripts/config.js',
+            mainConfigFile: '<%= settings.app %>/scripts/config.js',
 
         },
 

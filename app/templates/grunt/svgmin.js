@@ -1,11 +1,13 @@
+'use strict';
+
 module.exports = {
     svgmin: {
         dist: {
             files: [{
                 expand: true,
-                cwd: '<%= config.app %>/images',
+                cwd: '<%= settings.app %>/images',
                 src: '{,*/}*.svg',
-                dest: '<%= config.dist %>/images'
+                dest: '<%= settings.dist %>/images'
             }]
         }
     }

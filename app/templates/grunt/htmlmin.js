@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     dist: {
         options: {
@@ -5,17 +7,29 @@ module.exports = {
             // https://github.com/yeoman/grunt-usemin/issues/44
             // collapseWhitespace: true,
             // removeAttributeQuotes: true,
-            // removeCommentsFromCDATA: true,
-            // removeEmptyAttributes: true,
+            removeCommentsFromCDATA: true,
+            removeEmptyAttributes: true,
             // removeOptionalTags: true,
-            // removeRedundantAttributes: true,
-            // useShortDoctype: true
+            removeRedundantAttributes: true,
+            useShortDoctype: true
         },
-        files: [{
-            expand: true,
-            cwd: '<%= config.app %>',
-            src: '*.html',
-            dest: '<%= config.dist %>',
-        }]
+
+        files: {
+            '<%= settings.dist %>/index.html.temp': '<%= settings.app %>/index.html'
+        }
+    },
+    deploy: {
+        options: {
+            // https://github.com/yeoman/grunt-usemin/issues/44
+            collapseWhitespace: true,
+        },
+        files: [
+            { // copy all
+                expand: true,
+                cwd: '<%= settings.dist %>',
+                src: '*.html',
+                dest: '<%= settings.dist %>',
+            },
+        ]
     }
 };

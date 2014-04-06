@@ -1,10 +1,12 @@
+'use strict';
+
 module.exports = {
     dist: {
         files: [{
             expand: true,
-            cwd: '<%= config.app %>/images',
+            cwd: '<%= settings.app %>/images',
             src: '{,*/}*.{png,jpg,jpeg}',
-            dest: '<%= config.dist %>/images'
+            dest: '<%= settings.dist %>/images'
         }]
     }
 };

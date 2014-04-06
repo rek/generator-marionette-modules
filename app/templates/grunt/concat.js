@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 
     // options: {
@@ -6,8 +8,8 @@ module.exports = {
     // },
 
     // '.tmp/concat/js/app.js': [
-    // '<%= config.app %>/scripts/common/templates.js': [
-    //     '<%= config.app %>/scripts/templates-compiled/**/*.js'
+    // '<%= settings.app %>/scripts/common/templates.js': [
+    //     '<%= settings.app %>/scripts/templates-compiled/**/*.js'
     // ]
 
 };

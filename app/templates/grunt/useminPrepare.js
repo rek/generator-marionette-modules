@@ -1,6 +1,8 @@
+'use strict';
+
 module.exports = {
-    html: '<%= config.app %>/index.html',
+    html: '<%= settings.app %>/index.html',
     options: {
-        dest: '<%= config.dist %>'
+        dest: '<%= settings.dist %>'
     }
 };

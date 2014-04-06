@@ -1,13 +1,18 @@
+'use strict';
+
 module.exports = {
     dist: {
         files: [{
             dot: true,
             src: [
                 '.tmp',
-                '<%= config.dist %>/*',
-                '!<%= config.dist %>/.git*'
+                '<%= settings.dist %>/*',
+                '!<%= settings.dist %>/.git*'
             ]
         }]
     },
-    server: '.tmp'
+    server: '.tmp',
+    postBuild: {
+        src: '<%= settings.dist %>/*.temp',
+    }
 };

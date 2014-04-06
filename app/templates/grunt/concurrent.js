@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     options: {
         limit: 4
@@ -11,7 +13,7 @@ module.exports = {
     dist: [
         'imagemin',
         'svgmin',
-        'htmlmin',
+        'htmlmin:dist',
         'cssmin'
     ]
 };

@@ -1,3 +1,4 @@
+/*global location */
 require([
         'jquery',
         'backbone',

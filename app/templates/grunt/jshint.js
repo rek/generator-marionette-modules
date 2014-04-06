@@ -1,12 +1,14 @@
+'use strict';
+
 module.exports = {
     options: {
         jshintrc: '.jshintrc'
     },
     all: [
         'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
+        '<%= settings.app %>/scripts/{,*/}*.js',
+        '!<%= settings.app %>/scripts/vendor/*',
         'test/spec/{,*/}*.js',
-        '!<%= config.app %>/scripts/templates/compiled.js'
+        '!<%= settings.app %>/scripts/templates/compiled.js'
     ]
-}
+};

@@ -1,8 +1,10 @@
+'use strict';
+
 module.exports = {
     dist: {
         files: {
-            '<%= config.dist %>/styles/main.min.css': [
-                '<%= config.app %>/styles/*.css'
+            '<%= settings.dist %>/styles/main.min.css': [
+                '<%= settings.app %>/styles/*.css'
             ]
         }
 
