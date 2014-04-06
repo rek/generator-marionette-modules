@@ -24,7 +24,7 @@ module.exports = {
         dest: '<%= settings.dist %>/index.html',
         options: {
             process: function(content) {
-                return content.replace(/<script>require\(\[\"\/\/localhost:35729\/livereload.js\"\]\);<\/script>/g, '');
+                return content.replace(/<script>require\(\[\'\/\/localhost:35729\/livereload.js\'\]\);<\/script>/g, '');
             }
         }
     }
