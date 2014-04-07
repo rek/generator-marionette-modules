@@ -3,17 +3,6 @@ define(function(require) {
     var App = require('app');
     var path = 'modules/<%= name %>/';
 
-    requirejs.config({
-        baseUrl: 'scripts/',
-        paths: {
-            'list_view': path + 'list/list_view',
-            'list_controller': path + 'list/list_controller',
-            'show_view': path + 'show/show_view',
-            'show_controller': path + 'show/show_controller',
-            'entities_<%= name %>' : path + 'entities/<%= name %>',
-        }
-    });
-
     // create a new module
     App.module('App', {
         startWithParent: false,

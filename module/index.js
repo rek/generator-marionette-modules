@@ -78,8 +78,29 @@ ModuleGenerator.prototype.files = function() {
     this.copy('templates/show.dust', 'app/scripts/modules/' + this.name + '/templates/show.dust');
 
     this.copy('entities/_entity.js', 'app/scripts/modules/' + this.name + '/entities/' + this.name + '.js');
-    this.copy('list/_controller.js', 'app/scripts/modules/' + this.name + '/list/list_controller.js');
-    this.copy('list/_view.js', 'app/scripts/modules/' + this.name + '/list/list_view.js');
+    this.copy('list/_controller.js', 'app/scripts/modules/' + this.name + '/list/controller.js');
+    this.copy('list/_view.js', 'app/scripts/modules/' + this.name + '/list/view.js');
+};
+
+/**
+* Add includes for the new templates to the config file.
+*
+*/
+ModuleGenerator.prototype.updateConfig = function() {
+    var hook   = '/**===== yeoman hook =====**/',
+        path   = 'app/scripts/config.js',
+        file   = this.readFileAsString(path),
+        insert = "";
+
+        insert += "'list_view'      : 'modules/" + this.name + "/list/view',\n";
+        insert += "        'list_controller': 'modules/" + this.name + "/list/controller',\n";
+        // insert += "'show_view'      : 'modules/" + this.name + "/show/show_view',\n";
+        // insert += "'show_controller': 'modules/" + this.name + "/show/show_controller',\n";
+        insert += "        'entities_" + this.name + "': 'modules/" + this.name + "/entities/" + this.name + "',\n";
+
+    if (file.indexOf(insert) === -1) {
+        this.write(path, file.replace(hook, insert+'\n        '+hook));
+    }
 };
 
 module.exports = ModuleGenerator;

@@ -14,6 +14,10 @@ requirejs.config({
         templates: 'common/templates',
         spin: '../bower_components/spinjs/spin',
         'spin.jquery': '../bower_components/spinjs/jquery.spin',
+
+        /**===== yeoman hook =====**/
+        /**This above hook is required to work with, touch not it, nor it's indentation... please. **/
+
     },
     shim: {
         underscore: {
