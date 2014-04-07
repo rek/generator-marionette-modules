@@ -21,7 +21,7 @@ module.exports = {
         tasks: 'dustjs'
     },
     gruntfile: {
-        files: ['Gruntfile.js']
+        files: ['grunt/*.js']
     },
     livereload: {
         files: [
@@ -32,6 +32,9 @@ module.exports = {
             '{.tmp,<%= settings.app %>}/scripts/*.js',
             '<%= settings.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
-        tasks: ['livereload'] // , 'jshint'
+        // tasks: ['jshint'],
+        options: {
+          livereload: true,
+        },
     }
 };
