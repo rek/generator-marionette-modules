@@ -1,5 +1,5 @@
+'use strict';
 define(['app'], function(App) {
-    'use strict';
     App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette, $, _) {
         View.Layout = Marionette.Layout.extend({
             template: '<%= name %>_layout',

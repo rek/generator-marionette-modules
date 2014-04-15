@@ -1,7 +1,6 @@
 define(function(require) {
     'use strict';
     var App = require('app');
-    var path = 'modules/<%= name %>/';
 
     // create a new module
     App.module('App', {
@@ -18,7 +17,7 @@ define(function(require) {
     });
 
     // create a new sub module
-    App.module('Routers.<%= cname %>App', function(<%= cname %>AppRouter, App, Backbone, Marionette, $, _) {
+    App.module('Routers.<%= cname %>App', function(<%= cname %>AppRouter, App, Backbone, Marionette) { //, $, _) {
         this.name = 'Routers.<%= cname %>App';
 
         <%= cname %>AppRouter.Router = Marionette.AppRouter.extend({

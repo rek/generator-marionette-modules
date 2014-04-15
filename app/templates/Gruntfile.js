@@ -1,7 +1,5 @@
 'use strict';
 
-require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -45,9 +43,6 @@ module.exports = function(grunt) {
                         urls: ['http://localhost:8888/index.html']
                     }
                 }
-            },
-            'mocha_phantomjs': {
-                all: ['app/scripts/modules/{,*/}test/*.html']
             }
         }
     });

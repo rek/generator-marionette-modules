@@ -34,7 +34,7 @@ module.exports = {
         ],
         // tasks: ['jshint'],
         options: {
-          livereload: true,
+            livereload: true,
         },
     }
 };

@@ -1,6 +1,5 @@
-/*global App */
+'use strict';
 define(['app', 'list_view'], function(App, View) {
-    'use strict';
     App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $, _) {
         List.Controller = {
             list<%= cname %>: function() {

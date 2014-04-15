@@ -2,14 +2,13 @@
 
 module.exports = {
 
-    // options: {
-        // separator: ';\n',
-        // banner: banner
-    // },
+    options: {
+        // separator: '\n',
+        // banner: '/*global grunt */\n\'use strict\';\n'
+    },
 
-    // '.tmp/concat/js/app.js': [
     // '<%= settings.app %>/scripts/common/templates.js': [
-    //     '<%= settings.app %>/scripts/templates-compiled/**/*.js'
+        // '<%= settings.app %>/scripts/common/templates.js'
     // ]
 
 };
