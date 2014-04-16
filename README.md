@@ -16,15 +16,13 @@ Trick question. It's not a thing. It's this guy:
 
 Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
 ```
 $ npm install -g yo
 ```
 
 ### Yeoman Generators
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, this one created the one talked about above.
+Yeoman travels light. He didn't pack any generators when he moved in.
 
 To install generator-marionette-modules from npm, run:
 
@@ -38,18 +36,48 @@ Then initiate the generator:
 $ yo marionette-modules
 ```
 
-Finally, to generate a module for our app, simply run:
+You also need to generate a module for your app, simply run:
 
 ```
 $ yo marionette-modules:module moduleName
 ```
 
-### Getting To Know Yeoman
+### How to setup.
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced. Though not this generator, for that you will need to raise an issue here.
+After you install a module, you also need to configure it to run.
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+So in your main app.js file, change the placeholder MODULENAME to whatever you named your module, in the two places listed below
 
+
+To load your module change line 59:
+```
+require(['modules/MODULENAME/app'], function () {
+
+```
+
+To load your module change line 59:
+```
+require(['modules/MODULENAME/app'], function () {
+
+```
+
+Also on line 70, change the home page to one of your choosing:
+```
+App.trigger('MODULENAME:list');
+```
+
+
+### For dev:
+
+```
+grunt watch
+```
+
+### To build for prod:
+
+```
+grunt build
+```
 
 ## License
 
