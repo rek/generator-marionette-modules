@@ -32,7 +32,7 @@ require.config({
 });
 
 var specs = [
-    'spec/rote_entity.spec.js',
+    'spec/list_view.spec.js',
     'spec/list_controller.spec.js'
 ];
 

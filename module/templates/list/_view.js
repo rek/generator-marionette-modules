@@ -1,6 +1,6 @@
 'use strict';
 define(['app'], function(App) {
-    App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette, $, _) {
+    App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette) { // , $, _
         View.Layout = Marionette.Layout.extend({
             template: '<%= name %>_layout',
 
@@ -16,33 +16,33 @@ define(['app'], function(App) {
                         $view.toggleClass(cssClass);
                     }, 500);
                 });
-            },
+            }
         });
 
         // View.Panel = Marionette.ItemView.extend({
-        //   template: panelTpl,
+        //     template: panelTpl,
 
-        //   triggers: {
-        //     'click button.js-new': '<%= name %>:new'
-        //   },
+        //     triggers: {
+        //         'click button.js-new': '<%= name %>:new'
+        //     },
 
-        //   events: {
-        //     'submit #filter-form': 'filter<%= cname %>s'
-        //   },
+        //     events: {
+        //         'submit #filter-form': 'filter<%= cname %>s'
+        //     },
 
-        //   ui: {
-        //     criterion: 'input.js-filter-criterion'
-        //   },
+        //     ui: {
+        //         criterion: 'input.js-filter-criterion'
+        //     },
 
-        //   filter<%= cname %>s: function(e){
-        //     e.preventDefault();
-        //     var criterion = this.$('.js-filter-criterion').val();
-        //     this.trigger('<%= name %>s:filter', criterion);
-        //   },
+        //     filter<%= cname %>s: function(e){
+        //         e.preventDefault();
+        //         var criterion = this.$('.js-filter-criterion').val();
+        //         this.trigger('<%= name %>s:filter', criterion);
+        //     },
 
-        //   onSetFilterCriterion: function(criterion){
-        //     this.ui.criterion.val(criterion);
-        //   }
+        //     onSetFilterCriterion: function(criterion){
+        //         this.ui.criterion.val(criterion);
+        //     }
         // });
 
         View.<%= cname %> = Marionette.ItemView.extend({
@@ -55,7 +55,7 @@ define(['app'], function(App) {
                 'click button.js-delete': 'deleteClicked'
             },
 
-            highlightName: function(e) {
+            highlightName: function() {
                 this.$el.toggleClass('warning');
             },
 
@@ -95,7 +95,7 @@ define(['app'], function(App) {
             initialize: function() {
                 this.listenTo(this.collection, 'reset', function() {
                     App.log('reset called', '<%= name %> list view', 1);
-                    this.appendHtml = function(collectionView, itemView, index) {
+                    this.appendHtml = function(collectionView, itemView) { //, index) {
                         collectionView.$el.append(itemView.el);
                     };
                 });
@@ -103,7 +103,7 @@ define(['app'], function(App) {
 
             onCompositeCollectionRendered: function() {
                 App.log('rendered called', '<%= name %> list view', 1);
-                this.appendHtml = function(collectionView, itemView, index) {
+                this.appendHtml = function(collectionView, itemView) { //, index) {
                     collectionView.$el.prepend(itemView.el);
                 };
             }

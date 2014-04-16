@@ -1,14 +1,15 @@
-/*global define, describe, it, expect */
+/*global expect */
+/*jshint expr: true */
 'use strict';
 
 define([
         'app',
-        '../entities/XXXXX',
+        '../list/list_controller',
     ],
 
-    function(App, XXXXX) {
+    function(App) {
 
-        var SOMEMODULE = new App.Entities.XXXXX();
+        var SOMEMODULE = new App.List.Controller();
 
         describe('Examples collection', function() {
 

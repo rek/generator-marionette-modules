@@ -1,12 +1,12 @@
+'use strict';
 define(function(require) {
-    'use strict';
     var App = require('app');
 
     // create a new module
     App.module('App', {
         startWithParent: false,
         // only avaiable with object literal def of module;
-        initialize: function(options, moduleName, app) { // on prototype chain thus inheritable
+        initialize: function(options, moduleName, App) { // on prototype chain thus inheritable
             this.name = moduleName;
             App.log('Initalize: ' + App.getCurrentRoute(), this.name, 2);
         },

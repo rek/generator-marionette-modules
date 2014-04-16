@@ -1,6 +1,6 @@
 'use strict';
 define(['app', 'list_view'], function(App, View) {
-    App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $, _) {
+    App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
         List.Controller = {
             list<%= cname %>: function() {
                 require(['common/views', 'entities_<%= name %>'], function(CommonViews) {
@@ -16,7 +16,7 @@ define(['app', 'list_view'], function(App, View) {
                         // App.log('Fetched <%= name %> data', 'App', 1);
 
                         var <%= name %>ListView = new View.<%= cname %>({
-                          collection: <%= name %>
+                            collection: <%= name %>
                         });
 
                         // <%= name %>ListLayout.on('show', function() {
@@ -28,9 +28,9 @@ define(['app', 'list_view'], function(App, View) {
                         //   App.trigger('<%= name %>:show', model.get('id'));
                         // });
 
-                        <%= name %>ListView.on("itemview:<%= name %>:delete", function(childView, model) {
-                          // auto magically call's remove in the view.
-                          model.destroy();
+                        <%= name %>ListView.on('itemview:<%= name %>:delete', function(childView, model) {
+                            // auto magically call's remove in the view.
+                            model.destroy();
                         });
 
                         // when the data is here, show it in this region

@@ -34,8 +34,7 @@ define([
         });
 
         App.navigate = function(route, options) {
-            options || (options = {});
-            Backbone.history.navigate(route, options);
+            Backbone.history.navigate(route, options || {});
         };
 
         App.getCurrentRoute = function() {

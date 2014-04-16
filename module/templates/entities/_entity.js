@@ -10,14 +10,17 @@ define(['app'], function(App) {
                 slug: ''
             },
 
-            validate: function(attrs, options) {
-                var errors = {}
-                //     if (! attrs.something) {
-                //       errors.something = 'can't be blank';
+            validate: function(attrs) { // , options
+                var errors = {};
+                if (!attrs.fileName) {
+                    errors.fileName = 'can\'t be blank';
+                }
+                //     if (! attrs.somethingelse) {
+                //       errors.lastName = 'can't be blank';
                 //     }
                 //     else{
-                //       if (attrs.something.length < 2) {
-                //         errors.something = 'is too short';
+                //       if (attrs.somethingelse.length < 2) {
+                //         errors.somethingelse = 'is too short';
                 //       }
                 //     }
                 if (!_.isEmpty(errors)) {
@@ -34,7 +37,7 @@ define(['app'], function(App) {
         var initialize<%= cname %>s = function() {
             App.log('Initializing Fake <%= cname %>s', contextName, 1);
 
-            var fake<%= cname %>s = new Entities.<%= cname %> Collection([{
+            var fake<%= cname %>s = new Entities.<%= cname %>Collection([{
                 name: 'First <%= cname %>',
                 slug: 'page-1'
             }, {
@@ -48,14 +51,15 @@ define(['app'], function(App) {
         var API = {
             get<%= cname %>Entities: function() {
                 App.log('<%= name %>:entities event detected', contextName, 1);
-                var <%= name %> Collection = new Entities.<%= cname %>Collection();
-                var defer = $.Deferred(); <%= name %>Collection.fetch({
-                    complete: function(data) {
+                var <%= name %>Collection = new Entities.<%= cname %>Collection();
+                var defer = $.Deferred();
+                <%= name %>Collection.fetch({
+                    complete: function() {
                         defer.resolve(<%= name %>Collection); // send back the collection
                     },
                     // success: function(data){
-                    // App.log('success data', contextName, 1);
-                    // defer.resolve(data);
+                    //     App.log('success data', contextName, 1);
+                    //     defer.resolve(data);
                     // }
                 });
                 // chain the above promise,
@@ -85,8 +89,8 @@ define(['app'], function(App) {
         // return API.get<%= cname %>Entity(id);
         // });
 
-        App.reqres.setHandler('<%= name %>:entity:new', function(id) {
-            App.log('Making new <%= name %>', this.name, 1);
+        App.reqres.setHandler('images:entity:new', function(id) {
+            App.log('Making new image: ' + id, this.name, 1);
             return new Entities.<%= cname %>();
         });
     });

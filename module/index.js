@@ -67,11 +67,7 @@ ModuleGenerator.prototype.files = function() {
     this.mkdir('app/scripts/modules/' + this.name + '/test');
     this.mkdir('app/scripts/modules/' + this.name + '/test/spec');
 
-    this.copy('test/index.html', 'app/scripts/modules/' + this.name + '/test/index.html');
-    this.copy('test/runner.js', 'app/scripts/modules/' + this.name + '/test/runner.js');
-    this.copy('test/test-app.js', 'app/scripts/modules/' + this.name + '/test/test-app.js');
-    this.copy('test/example.spec.js', 'app/scripts/modules/' + this.name + '/test/spec/example.spec.js');
-
+    // module templates
     this.copy('templates/layout.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_layout.dust');
     this.copy('templates/_list.dust', 'app/scripts/modules/' + this.name + '/templates/list.dust');
     this.copy('templates/_list_one.dust', 'app/scripts/modules/' + this.name + '/templates/list_one.dust');
@@ -80,6 +76,12 @@ ModuleGenerator.prototype.files = function() {
     this.copy('entities/_entity.js', 'app/scripts/modules/' + this.name + '/entities/' + this.name + '.js');
     this.copy('list/_controller.js', 'app/scripts/modules/' + this.name + '/list/controller.js');
     this.copy('list/_view.js', 'app/scripts/modules/' + this.name + '/list/view.js');
+
+    // tests
+    this.copy('test/index.html', 'app/scripts/modules/' + this.name + '/test/index.html');
+    this.copy('test/runner.js', 'app/scripts/modules/' + this.name + '/test/runner.js');
+    this.copy('test/test-app.js', 'app/scripts/modules/' + this.name + '/test/test-app.js');
+    this.copy('test/_controller.spec.js', 'app/scripts/modules/' + this.name + '/test/spec/list_controller.spec.js');
 };
 
 /**
