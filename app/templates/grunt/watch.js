@@ -21,7 +21,7 @@ module.exports = {
         tasks: 'dustjs'
     },
     gruntfile: {
-        files: ['grunt/*.js']
+        files: ['Gruntfile.js', 'grunt/*.js']
     },
     livereload: {
         files: [

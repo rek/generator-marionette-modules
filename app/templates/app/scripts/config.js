@@ -16,7 +16,7 @@ requirejs.config({
         'spin.jquery': '../bower_components/spinjs/jquery.spin',
 
         /**===== yeoman hook =====**/
-        /**This above hook is required to work with, touch not it, nor it's indentation... please. **/
+        /**This above hook is required for Mr.Yeoman, touch not it, nor it's indentation... please. **/
 
     },
     shim: {

@@ -37,12 +37,12 @@ define(function(require) {
         var executeAction = function(action, arg) {
             App.switchApp('<%= cname %>App');
             action(arg);
-            App.execute('set:active:page', '<%= name %>');
+            // App.execute('set:active:page', '<%= name %>');
         };
 
         var API = {
             list<%= cname %> : function() {
-                require(['list_controller'], function(ListController) {
+                require(['<%= name %>_list_controller'], function(ListController) {
                     App.log('List <%= name %>: Controller loaded, requesting <%= name %>..', <%= cname %>AppRouter.name, 2);
                     executeAction(ListController.list<%= cname %> );
                 });

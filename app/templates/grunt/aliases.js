@@ -32,6 +32,10 @@ module.exports = {
         'clean:postBuild'
     ],
 
+    'serverf': [ // fast version
+        'concurrent:server'
+    ],
+
     'server': function(target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
@@ -40,8 +44,6 @@ module.exports = {
         grunt.task.run([
             'clean:server',
             'concurrent:server',
-            'livereload-start',
-            'connect:livereload',
             'open',
             'watch'
         ]);

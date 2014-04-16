@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-    // app: [],
+    app: [],
     modules: ['app/scripts/modules/{,*/}test/*.html']
-}
+};
