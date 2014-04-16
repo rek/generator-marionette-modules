@@ -52,13 +52,6 @@ So in your main app.js file, change the placeholder MODULENAME to whatever you n
 To load your module change line 59:
 ```
 require(['modules/MODULENAME/app'], function () {
-
-```
-
-To load your module change line 59:
-```
-require(['modules/MODULENAME/app'], function () {
-
 ```
 
 Also on line 70, change the home page to one of your choosing:
