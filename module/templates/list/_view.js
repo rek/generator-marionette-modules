@@ -45,7 +45,7 @@ define(['app'], function(App) {
         //     }
         // });
 
-        View.<%= cname %> = Marionette.ItemView.extend({
+        View.<%= cname %>One = Marionette.ItemView.extend({
             tagName: 'div',
             template: '<%= name %>_list_one',
 
@@ -78,7 +78,7 @@ define(['app'], function(App) {
             }
         });
 
-        var No<%= cname %>View = Marionette.ItemView.extend({
+        var <%= cname %>Empty = Marionette.ItemView.extend({
             template: '<%= name %>_none',
             // tagName: 'div',
             className: 'alert'
@@ -88,8 +88,8 @@ define(['app'], function(App) {
             tagName: 'div',
             className: '',
             template: '<%= name %>_list',
-            emptyView: No<%= cname %>View,
-            itemView: View.<%= cname %> ,
+            emptyView: <%= cname %>Empty,
+            itemView: View.<%= cname %>One,
             itemViewContainer: '.<%= name %>_list',
 
             initialize: function() {
