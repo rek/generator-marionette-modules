@@ -44,7 +44,7 @@ define(function(require) {
             list<%= cname %> : function() {
                 require(['<%= name %>_list_controller'], function(ListController) {
                     App.log('List <%= name %>: Controller loaded, requesting <%= name %>..', <%= cname %>AppRouter.name, 2);
-                    executeAction(ListController.list<%= cname %> );
+                    executeAction(ListController.list<%= cname %>);
                 });
             },
         };
@@ -52,7 +52,7 @@ define(function(require) {
         // also watch for manual events:
         App.on('<%= name %>:list', function() {
             App.navigate('/<%= name %>');
-            API.list<%= cname %> ();
+            API.list<%= cname %>();
         });
 
         App.addInitializer(function() {

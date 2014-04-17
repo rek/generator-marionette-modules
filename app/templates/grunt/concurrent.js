@@ -4,16 +4,19 @@ module.exports = {
     options: {
         limit: 4
     },
-    server: [
-
-    ],
+    server: {
+        tasks: ['watch'],
+        options: {
+            logConcurrentOutput: true
+        }
+    },
     test: [
 
     ],
     dist: [
-        'imagemin',
-        'svgmin',
+        'newer:imagemin',
+        'newer:svgmin',
         'htmlmin:dist',
-        'cssmin'
+        'newer:cssmin'
     ]
 };
