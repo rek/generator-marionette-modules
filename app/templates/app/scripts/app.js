@@ -38,7 +38,7 @@ define([
         };
 
         App.getCurrentRoute = function() {
-            App.log('Get current rote', 'App', 3);
+            App.log('Get current route', 'App', 3);
             return Backbone.history.fragment;
         };
 
@@ -80,12 +80,14 @@ define([
          * App changer
          */
         App.switchApp = function(appName, args) {
-            App.log('Switching to: ' + appName, 'App', 1);
             // do not initalise a new module if no name is given
             var currentApp = appName ? App.module(appName) : null;
-            if (App.currentApp === currentApp) {
+
+            if (App.currentApp === currentApp) { // only change if needed
                 return;
             }
+
+            App.log('Switching to: ' + appName, 'App', 1);
 
             if (App.currentApp) {
                 App.currentApp.stop();
