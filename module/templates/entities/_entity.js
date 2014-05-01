@@ -1,5 +1,5 @@
+'use strict';
 define(['app'], function(App) {
-    'use strict';
     App.module('Entities', function(Entities, App, Backbone, Marionette, $, _) {
         var contextName = 'Entity';
         Entities.<%= cname %> = Backbone.Model.extend({

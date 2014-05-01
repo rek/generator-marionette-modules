@@ -3,7 +3,7 @@ define(['app', '<%= name %>_list_view'], function(App, View) {
     App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
         List.Controller = {
             list<%= cname %>: function() {
-                require(['common/views', 'entities_<%= name %>'], function(CommonViews) {
+                require(['common/views', '<%= name %>_entity'], function(CommonViews) {
 
                     App.mainRegion.show(new CommonViews.Loading());
 

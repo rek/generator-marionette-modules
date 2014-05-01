@@ -106,7 +106,7 @@ ModuleGenerator.prototype.updateConfig = function() {
         insert += "        '" + this.name + "_list_controller': 'modules/" + this.name + "/list/controller',\n";
         // insert += "'show_view'      : 'modules/" + this.name + "/show/show_view',\n";
         // insert += "'show_controller': 'modules/" + this.name + "/show/show_controller',\n";
-        insert += "        '" + this.name + "_entities':      'modules/" + this.name + "/entities/" + this.name + "',\n";
+        insert += "        '" + this.name + "_entity':      'modules/" + this.name + "/entities/" + this.name + "',\n";
 
     if (file.indexOf(insert) === -1) {
         this.write(path, file.replace(hook, insert+'\n        '+hook));
