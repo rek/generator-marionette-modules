@@ -2,5 +2,5 @@
 
 module.exports = {
     app: [],
-    modules: ['app/scripts/modules/{,*/}test/*.html']
+    modules: ['<%= settings.app %>/scripts/modules/{,*/}test/*.html']
 };

@@ -46,6 +46,8 @@ ModuleGenerator.prototype.init = function() {
 
 ModuleGenerator.prototype.setup = function() {
     console.log('Creating a new module for you called: ' + this.name);
+
+    this.appPath = 'app/scripts/';
 };
 
 ModuleGenerator.prototype.files = function() {
@@ -59,23 +61,23 @@ ModuleGenerator.prototype.files = function() {
     // console.log(_(this.name).capitalize()+'');
     this.copy('_app.js', 'app/scripts/modules/' + this.name + '/app.js');
 
-    this.mkdir('app/scripts/modules/' + this.name);
-    this.mkdir('app/scripts/modules/' + this.name + '/entities');
-    this.mkdir('app/scripts/modules/' + this.name + '/list');
-    this.mkdir('app/scripts/modules/' + this.name + '/show');
-    this.mkdir('app/scripts/modules/' + this.name + '/templates');
-    this.mkdir('app/scripts/modules/' + this.name + '/test');
-    this.mkdir('app/scripts/modules/' + this.name + '/test/spec');
+    this.mkdir(this.appPath + 'modules/' + this.name);
+    this.mkdir(this.appPath + 'modules/' + this.name + '/entities');
+    this.mkdir(this.appPath + 'modules/' + this.name + '/list');
+    this.mkdir(this.appPath + 'modules/' + this.name + '/show');
+    this.mkdir(this.appPath + 'modules/' + this.name + '/templates');
+    this.mkdir(this.appPath + 'modules/' + this.name + '/test');
+    this.mkdir(this.appPath + 'modules/' + this.name + '/test/spec');
 
     // module templates
-    this.copy('templates/layout.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_layout.dust');
-    this.copy('templates/_list.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_list.dust');
-    this.copy('templates/_list_one.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
-    this.copy('templates/show.dust', 'app/scripts/modules/' + this.name + '/templates/' + this.name + '_show.dust');
+    this.copy('templates/layout.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_layout.dust');
+    this.copy('templates/_list.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list.dust');
+    this.copy('templates/_list_one.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
+    this.copy('templates/show.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_show.dust');
 
-    this.copy('entities/_entity.js', 'app/scripts/modules/' + this.name + '/entities/' + this.name + '.js');
-    this.copy('list/_controller.js', 'app/scripts/modules/' + this.name + '/list/controller.js');
-    this.copy('list/_view.js', 'app/scripts/modules/' + this.name + '/list/view.js');
+    this.copy('entities/_entity.js', this.appPath + 'modules/' + this.name + '/entities/' + this.name + '.js');
+    this.copy('list/_controller.js', this.appPath + 'modules/' + this.name + '/list/controller.js');
+    this.copy('list/_view.js', this.appPath + 'modules/' + this.name + '/list/view.js');
 };
 
 /**
@@ -83,11 +85,11 @@ ModuleGenerator.prototype.files = function() {
 *
 */
 ModuleGenerator.prototype.prepareTests = function() {
-    this.copy('test/index.html', 'app/scripts/modules/' + this.name + '/test/index.html');
-    this.copy('test/_runner.js', 'app/scripts/modules/' + this.name + '/test/runner.js');
-    this.copy('test/test-app.js', 'app/scripts/modules/' + this.name + '/test/test-app.js');
+    this.copy('test/index.html', this.appPath + 'modules/' + this.name + '/test/index.html');
+    this.copy('test/_runner.js', this.appPath + 'modules/' + this.name + '/test/runner.js');
+    this.copy('test/test-app.js', this.appPath + 'modules/' + this.name + '/test/test-app.js');
 
-    this.copy('test/_controller.spec.js', 'app/scripts/modules/' + this.name + '/test/spec/list_controller.spec.js');
+    this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
 };
 
 /**
@@ -96,9 +98,9 @@ ModuleGenerator.prototype.prepareTests = function() {
 */
 ModuleGenerator.prototype.updateConfig = function() {
     var hook   = '/**===== yeoman hook =====**/',
-        path   = 'app/scripts/config.js',
+        path   = this.appPath + 'config.js',
         file   = this.readFileAsString(path),
-        insert = "";
+        insert = '';
 
         insert += "'" + this.name + "_list_view'      : 'modules/" + this.name + "/list/view',\n";
         insert += "        '" + this.name + "_list_controller': 'modules/" + this.name + "/list/controller',\n";

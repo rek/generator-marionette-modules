@@ -1,5 +1,5 @@
 'use strict';
-define(['app', 'movie_list_view'], function(App, View) {
+define(['app', '<%= name %>_list_view'], function(App, View) {
     App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
         List.Controller = {
             list<%= cname %>: function() {

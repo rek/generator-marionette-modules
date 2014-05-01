@@ -2,7 +2,7 @@
 
 module.exports = {
     options: {
-        nospawn: true,
+        spawn: false,
         livereload: true
     },
     coffee: {
