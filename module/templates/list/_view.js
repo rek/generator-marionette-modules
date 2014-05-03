@@ -1,6 +1,7 @@
 'use strict';
 define(['app'], function(App) {
     App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette) { // , $, _
+        var contextName = '<%= cname %>App.List.View';
         View.Layout = Marionette.Layout.extend({
             template: '<%= name %>_layout',
 
@@ -93,8 +94,9 @@ define(['app'], function(App) {
             itemViewContainer: '.<%= name %>_list',
 
             initialize: function() {
+                App.log('init called', contextName, 1);
                 this.listenTo(this.collection, 'reset', function() {
-                    App.log('reset called', '<%= name %> list view', 1);
+                    App.log('reset called', contextName, 1);
                     this.appendHtml = function(collectionView, itemView) { //, index) {
                         collectionView.$el.append(itemView.el);
                     };
