@@ -4,14 +4,15 @@
 
 define([
         'app',
-        '/list/controller',
+        'entities/register'
     ],
 
     function(App) {
-
-        var SOMEMODULE = new App.<%= cname %>App.List.Controller();
-
-        describe('Examples collection', function() {
+        var contextName = 'EntitiesRegisterTest';
+        var SOMEMODULE = App.request('register:entities');
+        App.log('Register collection', contextName, 1);
+        console.log('Register collection: ' + JSON.stringify(SOMEMODULE));
+        describe('Register collection', function() {
 
             it('should exist', function() {
                 expect(SOMEMODULE).to.exist;

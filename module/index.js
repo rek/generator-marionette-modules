@@ -90,6 +90,8 @@ ModuleGenerator.prototype.prepareTests = function() {
     this.copy('test/test-app.js', this.appPath + 'modules/' + this.name + '/test/test-app.js');
 
     this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
+    this.copy('test/_view.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
+    this.copy('test/_entities.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/entities.spec.js');
 };
 
 /**

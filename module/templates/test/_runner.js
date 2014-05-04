@@ -37,8 +37,9 @@ require.config({
 });
 
 var specs = [
-    'spec/list_view.spec.js',
-    'spec/list_controller.spec.js'
+    'spec/entities.spec.js',
+    'spec/list_view.spec.js'
+//    'spec/list_controller.spec.js',
 ];
 
 require(specs, function() {

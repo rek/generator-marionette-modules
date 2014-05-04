@@ -52,6 +52,13 @@ define(['app'], function(App) {
             get<%= cname %>Entities: function() {
                 App.log('<%= name %>:entities event detected', contextName, 1);
                 var <%= name %>Collection = new Entities.<%= cname %>Collection();
+                <%= name %>Collection.reset(initialize<%= cname %>s().models); // update the collection
+                return <%= name %>Collection;
+            },
+//          TODO: make this work
+            get<%= cname %>EntitiesPromises: function() {
+                App.log('<%= name %>:entities event detected', contextName, 1);
+                var <%= name %>Collection = new Entities.<%= cname %>Collection();
                 var defer = $.Deferred();
                 <%= name %>Collection.fetch({
                     complete: function() {
