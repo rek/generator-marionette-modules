@@ -2,7 +2,7 @@
 
 > [Yeoman](http://yeoman.io) generator. For scaffolding a Marionette app with the Module pattern.
 
-> We like things like: less, dust, requirejs and mocha.
+This project uses things like: less, dustjs (linkedin), requirejs and mocha.
 
 ## Getting Started
 
@@ -19,17 +19,17 @@ $ npm install -g generator-marionette-modules
 
 Make a new directory, and cd into it:
 ```
-$ mkdir my-new-project && cd $_
+$ mkdir newProject && cd $_
 ```
 
 Then initiate the generator, optionally passing an app name:
 ```
-$ yo marionette-modules [app-name]
+$ yo marionette-modules [appName]
 ```
 
-You also need to generate a module for your app, so simply run:
+Then start generating modules for your app like so:
 ```
-$ yo marionette-modules:module moduleName
+$ yo marionette-modules:module [MODULENAME]
 ```
 
 ### How to setup.
