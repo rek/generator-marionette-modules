@@ -1,4 +1,3 @@
-///*global grunt */
 'use strict';
 
 module.exports = {
