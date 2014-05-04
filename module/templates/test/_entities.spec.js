@@ -4,18 +4,19 @@
 
 define([
         'app',
-        'entities/register'
+        'entities/<%= name %>'
     ],
 
     function(App) {
-        var contextName = 'EntitiesRegisterTest';
-        var SOMEMODULE = App.request('register:entities');
-        App.log('Register collection', contextName, 1);
-        console.log('Register collection: ' + JSON.stringify(SOMEMODULE));
-        describe('Register collection', function() {
+        var contextName = 'Entities<%= cname %>Test';
+        var module<%= cname %> = App.request('<%= name %>:entities');
+
+        App.log('<%= cname %> collection', contextName, 1);
+
+        describe('<%= cname %> collection', function() {
 
             it('should exist', function() {
-                expect(SOMEMODULE).to.exist;
+                expect(module<%= cname %>).to.exist;
             });
 
             // it('should be an instance of XXXXX', function() {

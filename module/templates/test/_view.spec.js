@@ -6,14 +6,14 @@ define([
         'app',
         'jquery',
         'list/view',
-        'entities/register'
+        'entities/<%= name %>'
     ],
 
     function(App) {
 
 //        describe('List view Deferred', function() {
 //            var entities = App.request('register:entities');
-////        console.log('entities: ' + JSON.stringify(entities));
+//            console.log('entities: ' + JSON.stringify(entities));
 //            $.when(entities).done(function(items){
 //                console.log('items: ' + JSON.stringify(items));
 //                if (items !== null) {
