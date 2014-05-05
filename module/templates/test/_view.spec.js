@@ -22,7 +22,7 @@ define([
             this.$fixture.empty().appendTo($('#fixtures'));
 
             // New default model and view for each test.
-            var entities = App.request('register:entities');
+            var entities = App.request('<%= name %>:entities');
             if (entities !== null) {
                 App.log('Creating view: ', contextName, 1);
                 this.view = new App.<%= cname %>App.List.View.<%= cname %>({
@@ -35,8 +35,8 @@ define([
 
         afterEach(function () {
             // Destroying the model also destroys the view.
-//            App.log('Teardown: ' + this.view.collection.length, contextName, 1);
-//            this.view.collection.reset();
+            // App.log('Teardown: ' + this.view.collection.length, contextName, 1);
+            // this.view.collection.reset();
         });
 
         after(function () {

@@ -16,14 +16,14 @@ require.config({
         // 'backbone.eventbinder' : '../bower_components/backbone.eventbinder/lib/amd/backbone.eventbinder',
         'backbone.babysitter'  : '../../../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
 
-        'list_view': 'list/list_view',
-        'entities_<%= name %>s': 'entities/<%= name %>s',
-        'common/views': '../../common/views',
+        'list_view'                  : 'list/list_view',
+        'entities_<%= name %>s'      : 'entities/<%= name %>s',
+        'common/views'               : '../../common/views',
 
-        'app': 'test/test-app',
-        templates: '../../common/templates',
-        spin: '../../../bower_components/spinjs/spin',
-        'spin.jquery': '../../../bower_components/spinjs/jquery.spin',
+        'app'                        : 'test/test-app',
+        'templates'                  : '../../common/templates',
+        'spin'                       : '../../../bower_components/spinjs/spin',
+        'spin.jquery'                : '../../../bower_components/spinjs/jquery.spin',
 
         '<%= name %>_list_view'      : 'list/view',
         '<%= name %>_list_controller': 'list/controller',
