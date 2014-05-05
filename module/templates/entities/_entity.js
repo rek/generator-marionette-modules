@@ -49,7 +49,7 @@ define(['app'], function(App) {
         };
 
         var API = {
-            get<%= cname %>Entity: function() {
+            get<%= cname %>Entity: function(id) {
                 var model = new Entities.<%= cname %>(id);
                 App.log('Made new object: ' + id, contextName, 1);
                 return model;
@@ -99,7 +99,7 @@ define(['app'], function(App) {
         });
 
         App.reqres.setHandler('<%= name %>:entity:new', function(id) {
-            return API.get<%= cname %>Entity();
+            return API.get<%= cname %>Entity(id);
         });
     });
 

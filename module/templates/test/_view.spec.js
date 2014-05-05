@@ -48,15 +48,15 @@ define([
 
         describe('List view', function() {
 
-            it('can render registerList', function () {
+            it('can render <%= name %>List', function () {
                 App.log('this.$fixture.html(): ' + this.$fixture.html(), contextName, 1);
-                expect(this.$fixture.html()).to.contain('register_list');
+                expect(this.$fixture.html()).to.contain('<%= name %>_list');
             });
 
         });
 
 //        describe('List view Deferred', function() {
-//            var entities = App.request('register:entities');
+//            var entities = App.request('<%= name %>:entities');
 //            console.log('entities: ' + JSON.stringify(entities));
 //            $.when(entities).done(function(items){
 //                console.log('items: ' + JSON.stringify(items));

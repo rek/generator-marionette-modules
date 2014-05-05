@@ -5,7 +5,7 @@ define(['app', 'list/view'], function(App, View) {
         List.Controller = {
             list<%= cname %>: function() {
                 require(['common/views', '<%= name %>_entity'], function(CommonViews) {
-                    // App.log('Showing mainRegion', contextName, 2);
+                    App.log('List <%= cname %> called', contextName, 2);
                     App.mainRegion.show(new CommonViews.Loading());
 
                     var fetching<%= cname %> = App.request('<%= name %>:entities');
