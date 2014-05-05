@@ -49,13 +49,19 @@ define(['app'], function(App) {
         };
 
         var API = {
+            get<%= cname %>Entity: function() {
+                var model = new Entities.<%= cname %>(id);
+                App.log('Made new object: ' + id, contextName, 1);
+                return model;
+            },
+
             get<%= cname %>Entities: function() {
                 App.log('<%= name %>:entities event detected', contextName, 1);
                 var <%= name %>Collection = new Entities.<%= cname %>Collection();
                 <%= name %>Collection.reset(initialize<%= cname %>s().models); // update the collection
                 return <%= name %>Collection;
             },
-//          TODO: make this work
+
             get<%= cname %>EntitiesPromises: function() {
                 App.log('<%= name %>:entities event detected', contextName, 1);
                 var <%= name %>Collection = new Entities.<%= cname %>Collection();
@@ -92,13 +98,8 @@ define(['app'], function(App) {
             return API.get<%= cname %>Entities();
         });
 
-        // App.reqres.setHandler('<%= name %>:entity', function(id) {
-        // return API.get<%= cname %>Entity(id);
-        // });
-
-        App.reqres.setHandler('images:entity:new', function(id) {
-            App.log('Making new image: ' + id, this.name, 1);
-            return new Entities.<%= cname %>();
+        App.reqres.setHandler('<%= name %>:entity:new', function(id) {
+            return API.get<%= cname %>Entity();
         });
     });
 
