@@ -4,17 +4,17 @@
 require.config({
     baseUrl: '../',
     paths: {
-        jquery: '../../../bower_components/jquery/dist/jquery.min',
-        backbone: '../../../bower_components/backbone/backbone',
-        underscore: '../../../bower_components/underscore/underscore',
-        marionette: '../../../bower_components/marionette/lib/core/amd/backbone.marionette',
+        jquery                 : '../../../bower_components/jquery/dist/jquery.min',
+        backbone               : '../../../bower_components/backbone/backbone',
+        underscore             : '../../../bower_components/underscore/underscore',
+        marionette             : '../../../bower_components/marionette/lib/core/amd/backbone.marionette',
         dust                   : '../../../bower_components/dustjs-linkedin/lib/dust',
         dustHelpers            : '../../../bower_components/dustjs-linkedin-helpers/lib/dust-helpers',
         dustMarionette         : '../../../bower_components/marionette-dust/src/backbone.marionette.dust',
         // 'backbone.picky'       : '../bower_components/backbone.picky/lib/amd/backbone.picky',
-        'backbone.wreqr': '../../../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
+        'backbone.wreqr'       : '../../../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
         // 'backbone.eventbinder' : '../bower_components/backbone.eventbinder/lib/amd/backbone.eventbinder',
-        'backbone.babysitter': '../../../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+        'backbone.babysitter'  : '../../../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
 
         'list_view': 'list/list_view',
         'entities_<%= name %>s': 'entities/<%= name %>s',
@@ -25,9 +25,9 @@ require.config({
         spin: '../../../bower_components/spinjs/spin',
         'spin.jquery': '../../../bower_components/spinjs/jquery.spin',
 
-        'register_list_view'      : 'list/view',
-        'register_list_controller': 'list/controller',
-        'register_entity':      'entities/register'
+        '<%= name %>_list_view'      : 'list/view',
+        '<%= name %>_list_controller': 'list/controller',
+        '<%= name %>_entity'         : 'entities/<%= name %>'
 
     },
     shim: {
