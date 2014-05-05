@@ -9,17 +9,17 @@ define([
 
     function(App) {
 
-        var SOMEMODULE = new App.<%= cname %>App.List.Controller();
+        var <%= name %> = new App.<%= cname %>App.List.Controller();
 
-        describe('Examples collection', function() {
+        describe('<%= cname %> controller', function() {
 
             it('should exist', function() {
-                expect(SOMEMODULE).to.exist;
+                expect(<%= name %>).to.exist;
             });
 
-            // it('should be an instance of XXXXX', function() {
-            //     // expect(XXXXX).to.be.an.instanceof(XXXXX);
-            // });
+            it('should be an instance of <%= cname %>', function() {
+                expect(<%= name %>).to.be.an.instanceof(App.<%= cname %>App.List.Controller);
+            });
 
         });
 
