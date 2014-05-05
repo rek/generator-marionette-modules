@@ -1,10 +1,11 @@
 'use strict';
 define(['app', 'list/view'], function(App, View) {
     App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
+        var contextName = '<%= cname %>App.List.Controller';
         List.Controller = {
             list<%= cname %>: function() {
                 require(['common/views', '<%= name %>_entity'], function(CommonViews) {
-
+                    App.log('List <%= cname %> called', contextName, 2);
                     App.mainRegion.show(new CommonViews.Loading());
 
                     var fetching<%= cname %> = App.request('<%= name %>:entities');
@@ -42,6 +43,7 @@ define(['app', 'list/view'], function(App, View) {
                     App.mainRegion.show(<%= name %>ListLayout);
 
                 });
+
             }
         };
     });

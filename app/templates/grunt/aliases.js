@@ -4,6 +4,7 @@ module.exports = {
     'test': [
         // 'clean:server',
         'newer:jshint',
+        'newer:dustjs',    // dust -> js
 
         'connect:test',
         'mocha_phantomjs',
