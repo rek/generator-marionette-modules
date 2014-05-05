@@ -104,7 +104,7 @@ define(['app'], function(App) {
             },
 
             onCompositeCollectionRendered: function() {
-                App.log('rendered called', '<%= name %> list view', 1);
+                App.log('rendered called', contextName, 1);
                 this.appendHtml = function(collectionView, itemView) { //, index) {
                     collectionView.$el.prepend(itemView.el);
                 };
