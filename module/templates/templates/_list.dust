@@ -1,1 +1,1 @@
-<div class="<%= name %>_list"></div>
+<div class="<%= name %>_list" id="<%= name %>List"></div>

@@ -4,14 +4,14 @@
 
 define([
         'app',
-        '/list/controller',
+        'list/controller'
     ],
 
     function(App) {
 
-        var SOMEMODULE = new App.<%= cname %>App.List.Controller();
+        var SOMEMODULE = new App.<%= cname %>App.List.Controller.listRegister();
 
-        describe('Examples collection', function() {
+        describe('Controller', function() {
 
             it('should exist', function() {
                 expect(SOMEMODULE).to.exist;

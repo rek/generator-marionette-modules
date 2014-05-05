@@ -96,9 +96,10 @@ define(['app'], function(App) {
         // return API.get<%= cname %>Entity(id);
         // });
 
-        App.reqres.setHandler('images:entity:new', function(id) {
-            App.log('Making new image: ' + id, this.name, 1);
-            return new Entities.<%= cname %>();
+        App.reqres.setHandler('<%= name %>:entity:new', function(id) {
+            var model = new Entities.Register(id);
+            App.log('Made new object: ' + id, contextName, 1);
+            return model;
         });
     });
 
