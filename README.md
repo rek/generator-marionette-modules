@@ -62,6 +62,12 @@ grunt watch
 grunt build
 ```
 
+### To run tests:
+
+```
+grunt test
+```
+
 ## License
 
 MIT
