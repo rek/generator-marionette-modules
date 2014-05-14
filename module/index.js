@@ -91,7 +91,7 @@ ModuleGenerator.prototype.files = function() {
 ModuleGenerator.prototype.prepareTests = function() {
     this.copy('test/index.html',          this.appPath + 'modules/' + this.name + '/test/index.html');
     this.copy('test/_runner.js',          this.appPath + 'modules/' + this.name + '/test/runner.js');
-    this.copy('test/test-app.js',         this.appPath + 'modules/' + this.name + '/test/test-app.js');
+    this.copy('test/_test-app.js',        this.appPath + 'modules/' + this.name + '/test/test-app.js');
 
     this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
     this.copy('test/_view.spec.js',       this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
