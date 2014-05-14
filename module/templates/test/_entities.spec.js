@@ -4,7 +4,7 @@
 
 define([
         'app',
-        'entities/<%= name %>'
+        '<%= name %>_entity'
     ],
 
     function(App) {

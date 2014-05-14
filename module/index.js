@@ -31,7 +31,7 @@ ModuleGenerator.prototype.init = function() {
         var prompts = [{
             name: 'moduleName',
             message: '...you forgot to say, what shall we call this module?',
-            default: 'awesomeModule'
+            default: 'example'
         }];
 
         var cb = this.async();

@@ -1,5 +1,5 @@
 'use strict';
-define(['app', 'list/view'], function(App, View) {
+define(['app', '<%= name %>_list_view'], function(App, View) {
     App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
         var contextName = '<%= cname %>App.List.Controller';
         List.Controller = {

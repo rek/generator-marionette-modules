@@ -4,7 +4,7 @@
 
 define([
         'app',
-        'list/controller'
+        '<%= name %>_list_controller'
     ],
 
     function(App) {

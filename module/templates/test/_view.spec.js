@@ -5,8 +5,8 @@
 define([
         'app',
         'jquery',
-        'list/view',
-        'entities/<%= name %>'
+        '<%= name %>_list_view',
+        '<%= name %>_entity'
     ],
 
     function(App, $) {

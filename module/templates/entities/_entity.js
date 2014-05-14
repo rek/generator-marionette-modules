@@ -1,7 +1,7 @@
 'use strict';
 define(['app'], function(App) {
     App.module('Entities', function(Entities, App, Backbone, Marionette, $, _) {
-        var contextName = '<%= cname %> Entity';
+        var contextName = '<%= cname %>.Entity';
         Entities.<%= cname %> = Backbone.Model.extend({
             urlRoot: '<%= name %>',
 
