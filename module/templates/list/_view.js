@@ -8,7 +8,7 @@ define(['app', 'templates', 'dust'], function(App) {
 
             regions: {
                 panelRegion: '#panel-region',
-                <%= name %>Region: '#content'
+                <%= name %>Region: '.content'
             },
 
             flash: function(cssClass) { // fade in and out.
