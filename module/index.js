@@ -32,12 +32,17 @@ ModuleGenerator.prototype.init = function() {
             name: 'moduleName',
             message: '...you forgot to say, what shall we call this module?',
             default: 'example'
+        }, {
+            name: 'empty',
+            message: '\n\nDo you want an empty module?',
+            default: 'no'
         }];
 
         var cb = this.async();
 
         this.prompt(prompts, function(props) {
             this.name = props.moduleName;
+            this.empty = props.empty;
             cb();
         }.bind(this));
     }
@@ -74,14 +79,16 @@ ModuleGenerator.prototype.files = function() {
     this.mkdir(this.appPath + 'modules/' + this.name + '/test/spec');
 
     // module templates
-    this.copy('templates/layout.dust',    this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_layout.dust');
-    this.copy('templates/_list.dust',     this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list.dust');
-    this.copy('templates/_list_one.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
-    this.copy('templates/show.dust',      this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_show.dust');
+    if (this.empty === 'no') {
+        this.copy('templates/layout.dust',    this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_layout.dust');
+        this.copy('templates/_list.dust',     this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list.dust');
+        this.copy('templates/_list_one.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
+        this.copy('templates/show.dust',      this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_show.dust');
 
-    this.copy('entities/_entity.js',      this.appPath + 'modules/' + this.name + '/entities/' + this.name + '.js');
-    this.copy('list/_controller.js',      this.appPath + 'modules/' + this.name + '/list/controller.js');
-    this.copy('list/_view.js',            this.appPath + 'modules/' + this.name + '/list/view.js');
+        this.copy('entities/_entity.js',      this.appPath + 'modules/' + this.name + '/entities/' + this.name + '.js');
+        this.copy('list/_controller.js',      this.appPath + 'modules/' + this.name + '/list/controller.js');
+        this.copy('list/_view.js',            this.appPath + 'modules/' + this.name + '/list/view.js');
+    }
 };
 
 /**
@@ -89,13 +96,15 @@ ModuleGenerator.prototype.files = function() {
 *
 */
 ModuleGenerator.prototype.prepareTests = function() {
-    this.copy('test/index.html',          this.appPath + 'modules/' + this.name + '/test/index.html');
-    this.copy('test/_runner.js',          this.appPath + 'modules/' + this.name + '/test/runner.js');
-    this.copy('test/_test-app.js',        this.appPath + 'modules/' + this.name + '/test/test-app.js');
+    if (this.empty === 'no') {
+        this.copy('test/index.html',          this.appPath + 'modules/' + this.name + '/test/index.html');
+        this.copy('test/_runner.js',          this.appPath + 'modules/' + this.name + '/test/runner.js');
+        this.copy('test/_test-app.js',        this.appPath + 'modules/' + this.name + '/test/test-app.js');
 
-    this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
-    this.copy('test/_view.spec.js',       this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
-    this.copy('test/_entities.spec.js',   this.appPath + 'modules/' + this.name + '/test/spec/entities.spec.js');
+        this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
+        this.copy('test/_view.spec.js',       this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
+        this.copy('test/_entities.spec.js',   this.appPath + 'modules/' + this.name + '/test/spec/entities.spec.js');
+    }
 };
 
 /**
