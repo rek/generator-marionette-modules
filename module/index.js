@@ -25,28 +25,33 @@ function ModuleGenerator(args) {
 util.inherits(ModuleGenerator, yeoman.NamedBase);
 
 ModuleGenerator.prototype.init = function() {
+    var prompts = [];
+
     // if the user didn't not enter a name on the command line
     // then prompt for one:
     if (this.fakeName) {
-        var prompts = [{
+        prompts.push({
             name: 'moduleName',
             message: '...you forgot to say, what shall we call this module?',
             default: 'example'
-        }, {
+        });
+    }
+
+    prompts.push({
             name: 'empty',
             message: '\n\nDo you want an empty module?',
             default: 'no'
-        }];
+    });
 
-        var cb = this.async();
+    var cb = this.async();
 
-        this.prompt(prompts, function(props) {
+    this.prompt(prompts, function(props) {
+        if (props.moduleName) {
             this.name = props.moduleName;
-            this.empty = props.empty;
-            cb();
-        }.bind(this));
-    }
-
+        }
+        this.empty = props.empty;
+        cb();
+    }.bind(this));
 };
 
 ModuleGenerator.prototype.setup = function() {
@@ -79,16 +84,14 @@ ModuleGenerator.prototype.files = function() {
     this.mkdir(this.appPath + 'modules/' + this.name + '/test/spec');
 
     // module templates
-    if (this.empty === 'no') {
-        this.copy('templates/layout.dust',    this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_layout.dust');
-        this.copy('templates/_list.dust',     this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list.dust');
-        this.copy('templates/_list_one.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
-        this.copy('templates/show.dust',      this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_show.dust');
+    this.copy('templates/layout.dust',    this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_layout.dust');
+    this.copy('templates/_list.dust',     this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list.dust');
+    this.copy('templates/_list_one.dust', this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_list_one.dust');
+    this.copy('templates/show.dust',      this.appPath + 'modules/' + this.name + '/templates/' + this.name + '_show.dust');
 
-        this.copy('entities/_entity.js',      this.appPath + 'modules/' + this.name + '/entities/' + this.name + '.js');
-        this.copy('list/_controller.js',      this.appPath + 'modules/' + this.name + '/list/controller.js');
-        this.copy('list/_view.js',            this.appPath + 'modules/' + this.name + '/list/view.js');
-    }
+    this.copy('entities/_entity.js',      this.appPath + 'modules/' + this.name + '/entities/' + this.name + '.js');
+    this.copy('list/_controller.js',      this.appPath + 'modules/' + this.name + '/list/controller.js');
+    this.copy('list/_view.js',            this.appPath + 'modules/' + this.name + '/list/view.js');
 };
 
 /**
@@ -96,15 +99,13 @@ ModuleGenerator.prototype.files = function() {
 *
 */
 ModuleGenerator.prototype.prepareTests = function() {
-    if (this.empty === 'no') {
-        this.copy('test/index.html',          this.appPath + 'modules/' + this.name + '/test/index.html');
-        this.copy('test/_runner.js',          this.appPath + 'modules/' + this.name + '/test/runner.js');
-        this.copy('test/_test-app.js',        this.appPath + 'modules/' + this.name + '/test/test-app.js');
+    this.copy('test/index.html',          this.appPath + 'modules/' + this.name + '/test/index.html');
+    this.copy('test/_runner.js',          this.appPath + 'modules/' + this.name + '/test/runner.js');
+    this.copy('test/_test-app.js',        this.appPath + 'modules/' + this.name + '/test/test-app.js');
 
-        this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
-        this.copy('test/_view.spec.js',       this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
-        this.copy('test/_entities.spec.js',   this.appPath + 'modules/' + this.name + '/test/spec/entities.spec.js');
-    }
+    this.copy('test/_controller.spec.js', this.appPath + 'modules/' + this.name + '/test/spec/list_controller.spec.js');
+    this.copy('test/_view.spec.js',       this.appPath + 'modules/' + this.name + '/test/spec/list_view.spec.js');
+    this.copy('test/_entities.spec.js',   this.appPath + 'modules/' + this.name + '/test/spec/entities.spec.js');
 };
 
 /**
@@ -123,7 +124,7 @@ ModuleGenerator.prototype.updateConfig = function() {
         // insert += "'show_controller': 'modules/" + this.name + "/show/show_controller',\n";
         insert += "        '" + this.name + "_entity':      'modules/" + this.name + "/entities/" + this.name + "',\n";
 
-    if (file.indexOf(insert) === -1) {
+    if (file && file.indexOf(insert) === -1) {
         this.write(path, file.replace(hook, insert+'\n        '+hook));
     }
 };

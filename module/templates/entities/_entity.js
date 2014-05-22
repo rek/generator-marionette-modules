@@ -3,6 +3,7 @@ define(['app'], function(App) {
     App.module('Entities', function(Entities, App, Backbone, Marionette, $, _) {
         var contextName = '<%= cname %>.Entity';
         Entities.<%= cname %> = Backbone.Model.extend({
+            <% if (empty === "no") { %>
             urlRoot: '<%= name %>',
 
             defaults: {
@@ -27,7 +28,9 @@ define(['app'], function(App) {
                     return errors;
                 }
             }
+            <% } %>
         });
+        <% if (empty === "no") { %>
 
         Entities.<%= cname %>Collection = Backbone.Collection.extend({
             url: '/',
@@ -47,7 +50,7 @@ define(['app'], function(App) {
 
             return fake<%= cname %>s;
         };
-
+        <% } %>
         var API = {
             get<%= cname %>Entity: function(id) {
                 var model = new Entities.<%= cname %>(id);
@@ -55,6 +58,7 @@ define(['app'], function(App) {
                 return model;
             },
 
+            <% if (empty === "no") { %>
             get<%= cname %>Entities: function() {
                 App.log('<%= name %>:entities event detected', contextName, 1);
                 var <%= name %>Collection = new Entities.<%= cname %>Collection();
@@ -91,9 +95,9 @@ define(['app'], function(App) {
                 });
                 return promise;
             },
-
+            <% } %>
         };
-
+        <% if (empty === "no") { %>
         App.reqres.setHandler('<%= name %>:entities', function() {
             return API.get<%= cname %>Entities();
         });
@@ -101,6 +105,7 @@ define(['app'], function(App) {
         App.reqres.setHandler('<%= name %>:entity:new', function(id) {
             return API.get<%= cname %>Entity(id);
         });
+        <% } %>
     });
 
     return;

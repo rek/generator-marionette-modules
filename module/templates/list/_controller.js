@@ -4,6 +4,7 @@ define(['app', '<%= name %>_list_view'], function(App, View) {
         var contextName = '<%= cname %>App.List.Controller';
         List.Controller = {
             list<%= cname %>: function() {
+                <% if (empty === "no") { %>
                 require(['common/views', '<%= name %>_entity'], function(CommonViews) {
                     App.log('List <%= cname %> called', contextName, 2);
                     App.mainRegion.show(new CommonViews.Loading());
@@ -41,9 +42,8 @@ define(['app', '<%= name %>_list_view'], function(App, View) {
 
                     // show the whole layout
                     App.mainRegion.show(<%= name %>ListLayout);
-
                 });
-
+                <% } %>
             }
         };
     });
