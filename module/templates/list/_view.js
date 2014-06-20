@@ -1,7 +1,7 @@
 'use strict';
 define(['app', 'templates', 'dust'], function(App) {
-    App.module('<%= cname %>App.List.View', function(View, App, Backbone, Marionette) { // , $, _
-        var contextName = '<%= cname %>App.List.View';
+    App.module('<%= cname %>.List.View', function(View, App, Backbone, Marionette) { // , $, _
+        var contextName = '<%= cname %>.List.View';
         <% if (empty === "no") { %>
         View.Layout = Marionette.Layout.extend({
             template: '<%= name %>_layout',
@@ -114,5 +114,5 @@ define(['app', 'templates', 'dust'], function(App) {
         <% } %>
     });
 
-    return App.<%= cname %>App.List.View;
+    return App.<%= cname %>.List.View;
 });

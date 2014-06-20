@@ -1,7 +1,7 @@
 'use strict';
 define(['app', '<%= name %>_list_view'], function(App, View) {
-    App.module('<%= cname %>App.List', function (List, App, Backbone, Marionette, $) { // , _
-        var contextName = '<%= cname %>App.List.Controller';
+    App.module('<%= cname %>.List', function (List, App, Backbone, Marionette, $) { // , _
+        var contextName = '<%= cname %>.List.Controller';
         List.Controller = {
             list<%= cname %>: function() {
                 <% if (empty === "no") { %>
@@ -47,5 +47,5 @@ define(['app', '<%= name %>_list_view'], function(App, View) {
             }
         };
     });
-    return App.<%= cname %>App.List.Controller;
+    return App.<%= cname %>.List.Controller;
 });
