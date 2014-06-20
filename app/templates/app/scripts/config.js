@@ -27,13 +27,11 @@ requirejs.config({
             deps: ['jquery', 'underscore', 'dust'],
             exports: 'Backbone'
         },
-        dustMarionette: {
-            deps: ['backbone']
-        },
         dust: {
             exports: 'dust'
         },
         dustHelpers: ['dust'],
+        dustMarionette: ['backbone'],
         templates: ['dust', 'dustMarionette'] // load dust before our compiled templates
     },
     deps: ['main'] // <-- run our app
