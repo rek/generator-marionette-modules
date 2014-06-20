@@ -5,7 +5,7 @@ define(['app', '<%= name %>_list_view'], function(App, View) {
         List.Controller = {
             list<%= cname %>: function() {
                 <% if (empty === "no") { %>
-                require(['common/views', '<%= name %>_entity'], function(CommonViews) {
+                require(['common_views', '<%= name %>_entity'], function(CommonViews) {
                     App.log('List <%= cname %> called', contextName, 2);
                     App.mainRegion.show(new CommonViews.Loading());
 
