@@ -3,26 +3,24 @@ define(function(require) {
     var App = require('app');
 
     // create a new module
-    App.module('App', {
+    App.module('<%= cname %>', {
         startWithParent: false,
         // only avaiable with object literal def of module;
-        initialize: function(options, moduleName, App) { // on prototype chain thus inheritable
-            this.name = moduleName;
+        // initialize: function(options, moduleName, App) { // on prototype chain thus inheritable
+            // this.name = moduleName;
+        // },
+        define: function(<%= cname %>, App, Backbone, Marionette, $, _) { // non inheritable
             App.log('Initalize: ' + App.getCurrentRoute(), this.name, 2);
-        },
-        // define: function(<%= cname %>App, App, Backbone, Marionette, $, _) { // non inheritable
-            // temp stuff for logging
-            // TODO: find a better way to get module name
-        // }
+        }
     });
 
     // create a new sub module
-    App.module('Routers.<%= cname %>App', function(<%= cname %>AppRouter, App, Backbone, Marionette) { //, $, _) {
-        this.name = 'Routers.<%= cname %>App';
+    App.module('Routers.<%= cname %>', function(<%= cname %>Router, App, Backbone, Marionette) { //, $, _) {
+        this.name = 'Routers.<%= cname %>';
 
-        <%= cname %>AppRouter.Router = Marionette.AppRouter.extend({
+        <%= cname %>Router.Router = Marionette.AppRouter.extend({
             initialize: function() {
-                // App.log('Before Router', <%= cname %>AppRouter.name);
+                // App.log('Before Router', <%= cname %>Router.name);
                 // start ourselves
                 // App.switchApp('<%= cname %>App', {});
             },
@@ -56,12 +54,12 @@ define(function(require) {
         });
 
         App.addInitializer(function() {
-            App.log('Initalizer running: Starting Router', <%= cname %>AppRouter.name, 2);
-            new <%= cname %>AppRouter.Router({
+            App.log('Initalizer running: Starting Router', <%= cname %>Router.name, 2);
+            new <%= cname %>Router.Router({
                 controller: API
             });
         });
     });
 
-    return App.<%= cname %>AppRouter;
+    return App.<%= cname %>Router;
 });

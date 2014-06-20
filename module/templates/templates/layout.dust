@@ -1,12 +1,12 @@
 <div class='layout-template'>
 
-  <header>
-    <h1>{title}</h1>
-  </header>
+    <header>
+        <h1>{title}</h1>
+    </header>
 
-  <section>
-    <navigation class='menu'></navigation>
-    <div class='content'></div>
-  </section>
+    <section>
+        <nav class='menu'></nav>
+        <div class='content'></div>
+    </section>
 
 </div>
