@@ -33,7 +33,7 @@ define(function(require) {
         });
 
         var executeAction = function(action, arg) {
-            App.switchApp('<%= cname %>App');
+            App.switchApp('<%= cname %>');
             action(arg);
             // App.execute('set:active:page', '<%= name %>');
         };
