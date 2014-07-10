@@ -36,7 +36,7 @@ ModuleGenerator.prototype.init = function() {
     if (this.fakeModule) {
         prompts.push({
             name: 'moduleName',
-            message: '...you forgot to say, what if your module called?',
+            message: '...you forgot to say, what is your module called?',
             default: 'example'
         });
     }
@@ -86,15 +86,16 @@ ModuleGenerator.prototype.files = function() {
         }
     });
     this.cname = _.capitalize(this.name);
+    this.vname = _.capitalize(this.view);
 
     this.mkdir(this.appPath + 'modules/' + this.name + '/' + this.view);
 
-    this.copy('list/_controller.js',      this.appPath + 'modules/' + this.name + '/list/controller.js');
-    this.copy('list/_view.js',            this.appPath + 'modules/' + this.name + '/list/view.js');
+    this.copy('_controller.js',      this.appPath + 'modules/' + this.name + '/' + this.view + '/controller.js');
+    this.copy('_view.js',            this.appPath + 'modules/' + this.name + '/' + this.view + '/view.js');
 };
 
 /**
-* Add includes for the new templates to the config file.
+* Add paths for the new files to the loader config file.
 *
 */
 ModuleGenerator.prototype.updateConfig = function() {
