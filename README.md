@@ -32,6 +32,11 @@ Then start generating modules for your app like so:
 $ yo marionette-modules:module [MODULENAME]
 ```
 
+If you want just a view for a module use: (Eg: list, show etc.)
+```
+$ yo marionette-modules:view [MODULENAME] [VIEWNAME]
+```
+
 ### How to setup.
 
 After you install a module, you also need to configure it to run.

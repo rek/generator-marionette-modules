@@ -38,9 +38,9 @@ ModuleGenerator.prototype.init = function() {
     }
 
     prompts.push({
-            name: 'empty',
-            message: '\n\nDo you want an empty module?',
-            default: 'no'
+        name: 'empty',
+        message: '\n\nDo you want an empty module?',
+        default: 'no'
     });
 
     var cb = this.async();
