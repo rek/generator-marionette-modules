@@ -32,10 +32,18 @@ Then start generating modules for your app like so:
 $ yo marionette-modules:module [MODULENAME]
 ```
 
+To generate action (submodules) for your app:
+*NOTE:* there are no args or options at this point for `action`
+```
+$ yo marionette-modules:action
+```
+
+*NOTE:* This is not complete:
 If you want just a view for a module use: (Eg: list, show etc.)
 ```
 $ yo marionette-modules:view [MODULENAME] [VIEWNAME]
 ```
+
 
 ### How to setup.
 
