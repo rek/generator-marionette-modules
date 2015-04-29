@@ -88,10 +88,12 @@ ModuleGenerator.prototype.files = function() {
     this.cname = _.capitalize(this.name);
     this.vname = _.capitalize(this.view);
 
-    this.mkdir(this.appPath + 'modules/' + this.name + '/' + this.view);
+    var path = this.appPath + 'modules/' + this.name + '/' + this.view;
+    this.mkdir(path);
+    this.mkdir(path + '/templates');
 
-    this.copy('_controller.js',      this.appPath + 'modules/' + this.name + '/' + this.view + '/controller.js');
-    this.copy('_view.js',            this.appPath + 'modules/' + this.name + '/' + this.view + '/view.js');
+    this.copy('_view.js',       path + '/view.js');
+    this.copy('_controller.js', path + '/controller.js');
 };
 
 /**
@@ -104,8 +106,8 @@ ModuleGenerator.prototype.updateConfig = function() {
         file   = this.readFileAsString(path),
         insert = '';
 
-        insert += "'" + this.name + "_view_" + this.name + "'      : 'modules/" + this.name + "/" + this.name + "/view',\n";
-        insert += "        '" + this.name + "_controller_" + this.name + "'': 'modules/" + this.name + "/" + this.name + "/controller',\n";
+        insert += "'" + this.name + "_view_" + this.view + "'      : 'modules/" + this.name + "/" + this.view + "/view',\n";
+        insert += "        '" + this.name + "_controller_" + this.view + "': 'modules/" + this.name + "/" + this.view + "/controller',\n";
 
     if (file && file.indexOf(insert) === -1) {
         this.write(path, file.replace(hook, insert+'\n        '+hook));
