@@ -32,6 +32,12 @@ Then start generating modules for your app like so:
 $ yo marionette-modules:module [MODULENAME]
 ```
 
+To generate action (submodules) for your app:
+```
+$ yo marionette-modules:action
+```
+*NOTE:* there are no args or options at this point for `action`
+
 ### How to setup.
 
 After you install a module, you also need to configure it to run.
